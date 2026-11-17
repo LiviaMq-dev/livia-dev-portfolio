@@ -1,0 +1,135 @@
+/* Capsule navigation inspired by the supplied reference, in Livia.Dev colors. */
+:root { --site-gutter: clamp(32px, 11.75vw, 226px); }
+.site-header {
+  top: 0;
+  padding-block: 15px;
+  border: 0;
+  background: transparent;
+  backdrop-filter: none;
+  transition: transform .26s ease;
+}
+.site-header--hidden { transform: translateY(-100%); pointer-events: none; }
+.header-inner.shell {
+  width: calc(100% - var(--site-gutter) - var(--site-gutter));
+  height: 62px;
+  gap: 22px;
+  padding-inline: 23px;
+  border: 1px solid rgba(241, 216, 255, .55);
+  border-radius: 18px;
+  background: rgba(201, 166, 227, .84);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  backdrop-filter: blur(18px) saturate(1.2);
+  box-shadow: 0 8px 28px rgba(0,0,0,.16), inset 0 1px 0 rgba(255,255,255,.28);
+}
+.header-inner .brand {
+  flex: none;
+  color: #100817;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -.08em;
+}
+.header-inner .brand__symbol { color: #7800ad; }
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 1.5vw, 24px);
+  margin-inline: auto;
+}
+.desktop-nav > a, .nav-more > button {
+  position: relative;
+  padding: 9px 0;
+  color: #180c22;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.045em;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.desktop-nav > a::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 4px;
+  left: 0;
+  height: 2px;
+  background: #8c00c9;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .2s ease;
+}
+.desktop-nav > a:hover::after, .desktop-nav > a[aria-current]::after { transform: scaleX(1); }
+.desktop-nav > a:hover, .nav-more:hover > button, .nav-more:focus-within > button { color: #680093; }
+.nav-more > button { border: 0; background: transparent; }
+.nav-more__panel {
+  top: calc(100% + 15px);
+  left: -20px;
+  min-width: 190px;
+  padding: 8px;
+  border: 1px solid #b978da;
+  border-radius: 9px;
+  background: #c9a6e3;
+  box-shadow: 0 12px 25px rgba(0,0,0,.22);
+}
+.nav-more--open .nav-more__panel { display: grid; }
+.nav-more__panel a {
+  padding: 11px;
+  color: #180c22;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.nav-more__panel a:hover { color: #680093; background: rgba(255,255,255,.2); }
+.header-contact {
+  min-height: 40px;
+  padding: 9px 17px;
+  border: 0;
+  border-radius: 999px;
+  background: #a700f1;
+  color: #fff;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: 0 2px 12px rgba(167,0,241,.25);
+}
+.header-contact:hover { background: #7c00bb; }
+.menu-toggle { color: #180c22; border-color: #7d419e; border-radius: 8px; }
+.mobile-nav {
+  top: calc(100% - 3px);
+  right: var(--site-gutter);
+  left: auto;
+  width: min(360px, calc(100% - var(--site-gutter) - var(--site-gutter)));
+  max-height: calc(100dvh - 94px);
+  border: 1px solid #b978da;
+  border-radius: 10px;
+  background: #c9a6e3;
+  box-shadow: 0 18px 30px rgba(0,0,0,.3);
+}
+.mobile-nav a { color: #180c22; border-bottom-color: #ad81ca; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+.mobile-nav a:hover { color: #680093; }
+
+@media (max-width: 1100px) {
+  .desktop-nav { gap: 12px; }
+  .desktop-nav > a, .nav-more > button { font-size: 10px; }
+  .header-inner.shell { gap: 13px; }
+}
+@media (max-width: 1200px) {
+  .desktop-nav, .header-contact { display: none; }
+  .menu-toggle { display: flex; margin-left: auto; }
+  .mobile-nav--open { display: grid; }
+}
+@media (max-width: 760px) { :root { --site-gutter: clamp(24px, 6vw, 48px); } }
+@media (max-width: 650px) {
+  .site-header { padding-block: 12px; }
+  .header-inner.shell { height: 56px; padding-inline: 15px; }
+  .header-inner .brand { font-size: 19px; }
+  .mobile-nav { max-height: calc(100dvh - 80px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .desktop-nav > a::after { transition: none; }
+}
