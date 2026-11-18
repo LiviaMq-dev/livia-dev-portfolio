@@ -1,0 +1,89 @@
+.about-me {
+  padding-block: clamp(86px, 10vw, 148px);
+  background: #100817;
+}
+.about-me__label {
+  display: block;
+  margin-bottom: 44px;
+  color: #a700f1;
+  font-size: 12px;
+}
+.about-me__inner {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: clamp(48px, 7vw, 112px);
+}
+.about-me__visual {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(167, 0, 241, .45);
+  border-radius: 24px;
+  background: #1b1024;
+}
+.about-me__visual span {
+  color: #9c81ac;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: .06em;
+}
+.about-me__heading h2 {
+  margin: 0;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(46px, 5vw, 76px);
+  font-weight: 600;
+  letter-spacing: -.065em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.about-me__heading h2 span { color: #a700f1; }
+.about-me__rule {
+  display: block;
+  width: min(100%, 260px);
+  height: 1px;
+  margin-top: 32px;
+  background: linear-gradient(90deg, #a700f1, transparent);
+}
+.about-me__content { max-width: 720px; margin-top: 34px; }
+.about-me__content p {
+  margin: 0 0 26px;
+  color: #d3cdd9;
+  font-size: clamp(16px, 1.3vw, 18px);
+  line-height: 1.78;
+}
+.about-me__contact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 50px;
+  margin-top: 20px;
+  padding: 9px 25px;
+  border: 2px solid #a700f1;
+  border-radius: 999px;
+  color: #c18add;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background-color .2s ease, color .2s ease;
+}
+.about-me__contact:hover { background: #a700f1; color: #fff; }
+@media (max-width: 900px) {
+  .about-me__inner { grid-template-columns: 1fr; gap: 35px; }
+  .about-me__visual { max-width: 500px; }
+  .about-me__heading h2 { font-size: clamp(42px, 8vw, 62px); }
+  .about-me__rule { margin-top: 22px; }
+}
+@media (max-width: 650px) {
+  .about-me { padding-block: 80px 92px; }
+  .about-me__label { margin-bottom: 28px; }
+  .about-me__inner { gap: 30px; }
+  .about-me__content p { line-height: 1.7; }
+  .about-me__contact { margin-top: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-me__contact { transition: none; }
+}

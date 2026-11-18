@@ -1,14 +1,17 @@
-import { Asterisk, Braces, Code2, Database, GitBranch, Layers3, Mail, Sparkles, Workflow } from 'lucide-react'
+import { Asterisk, Mail } from 'lucide-react'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
+import { AboutMe } from './components/AboutMe'
+import { SkillsAccordion } from './components/SkillsAccordion'
+import { ExperienceTimeline } from './components/ExperienceTimeline'
+import { ProjectsShowcase } from './components/ProjectsShowcase'
 import { Brand } from './components/Brand'
 import { portfolio } from './data/portfolio'
 
-const skillIcons = [Code2, Braces, Sparkles, Workflow, GitBranch, Database, Layers3]
 const marqueeItems = ['DEVELOPMENT', 'ARTIFICIAL INTELLIGENCE', 'AUTOMATIONS', 'TECHNOLOGY']
 
-function SectionTitle({ index, title, side }: { index: string; title: string; side?: string }) {
-  return <div className="section-title"><span className="section-title__index">{index}</span><h2>{title}</h2>{side && <p>{side}</p>}</div>
+function SectionTitle({ index, title, side, accent }: { index: string; title: string; side?: string; accent?: string }) {
+  return <div className="section-title"><span className="section-title__index">{index}</span><h2>{accent ? <><span className="section-title__accent">{accent}</span>{title.slice(accent.length)}</> : title}</h2>{side && <p>{side}</p>}</div>
 }
 
 function Pending({ title, body, kind }: { title: string; body: string; kind?: string }) {
@@ -30,16 +33,13 @@ function App() {
         </div>
       </div>
 
-      <section id="sobre" className="section shell about" aria-labelledby="about-title">
-        <SectionTitle index="01 / SOBRE" title="Uma identidade em código." side="O conteúdo pessoal desta seção será completado com a sua história." />
-        <div className="about__grid"><div className="about__statement"><span className="asterisk"><Asterisk size={54} strokeWidth={1} /></span><h3 id="about-title">Curiosidade técnica.<br />Olhar humano.</h3></div><div className="about__body"><p>Esta é a base visual de um portfólio que vai apresentar sua trajetória, interesses, áreas de atuação e objetivos profissionais.</p><p>Os textos biográficos finais dependerão das informações fornecidas por você. Assim, a narrativa permanece autêntica e fácil de atualizar.</p><span className="edit-label">Texto provisório · editar em próxima etapa</span></div></div>
-      </section>
+      <AboutMe />
 
-      <section id="habilidades" className="section section--panel" aria-labelledby="skills-title"><div className="shell"><SectionTitle index="02 / HABILIDADES" title="Um mapa de possibilidades." side="Categorias iniciais, sem afirmar domínio ou experiência." /><h3 id="skills-title" className="sr-only">Áreas de habilidades</h3><div className="skills-list">{portfolio.skillAreas.map((area, index) => { const Icon = skillIcons[index]; return <div className="skill-row" key={area}><span className="skill-row__num">0{index + 1}</span><Icon size={24} strokeWidth={1.5} aria-hidden="true" /><span>{area}</span><span className="skill-row__state">A definir</span></div> })}</div></div></section>
+      <section id="habilidades" className="section section--panel" aria-labelledby="skills-title"><div className="shell"><SectionTitle index="02 / SKILLS" title="Technologies and tools." accent="Technologies" /><h3 id="skills-title" className="sr-only">Skills and technologies</h3><SkillsAccordion /></div></section>
 
-      <section id="experiencia" className="section shell timeline-section" aria-labelledby="experience-title"><SectionTitle index="03 / EXPERIÊNCIA" title="Trajetória profissional." side="Uma linha do tempo pronta para receber informações reais." /><h3 id="experience-title" className="sr-only">Experiência profissional</h3><div className="timeline"><span className="timeline__dot" /><Pending kind="Aguardando dados" title="Experiências serão adicionadas aqui" body="Cargo, empresa, período, responsabilidades e resultados entrarão nesta linha do tempo quando você enviar as informações." /></div></section>
+      <section id="experiencia" className="section shell timeline-section" aria-labelledby="experience-title"><SectionTitle index="03 / EXPERIÊNCIA" title="Professional journey." accent="Professional" /><h3 id="experience-title" className="sr-only">Experiência profissional</h3><ExperienceTimeline /></section>
 
-      <section id="projetos" className="section section--panel projects" aria-labelledby="projects-title"><div className="shell"><SectionTitle index="04 / PROJETOS" title="Projetos, com contexto." side="Espaço preparado para imagens, tecnologias e links verificáveis." /><h3 id="projects-title" className="sr-only">Projetos</h3><div className="project-layout"><div className="project-art" aria-hidden="true"><div className="project-art__window"><span /><span /><span /></div><span className="project-art__slash">/</span><span className="project-art__text">Seu próximo<br />projeto aqui.</span></div><Pending kind="Vitrine de projetos" title="Histórias reais merecem destaque" body="A estrutura de dados aceita nome, descrição, imagem, tecnologias, funcionalidades e links. Nenhum projeto fictício foi publicado." /></div></div></section>
+      <section id="projetos" className="section section--panel projects" aria-labelledby="projects-title"><div className="shell"><SectionTitle index="04 / PROJETOS" title="My projects" accent="My" /><h3 id="projects-title" className="sr-only">Projetos</h3><ProjectsShowcase /></div></section>
 
       <section id="certificacoes" className="section shell credentials" aria-labelledby="cert-title"><SectionTitle index="05 / CURSOS E CERTIFICAÇÕES" title="Aprendizado documentado." side="Registros e filtros serão ativados com os certificados reais." /><h3 id="cert-title" className="sr-only">Cursos e certificações</h3><div className="credentials__grid"><Pending title="Cursos e certificados" body="Nome, instituição, carga horária, conclusão e link de verificação aparecerão aqui." /><div className="credential-graphic" aria-hidden="true"><div className="credential-graphic__inner"><Asterisk size={48} strokeWidth={1} /><span>aprendizado<br />contínuo</span></div></div></div></section>
 

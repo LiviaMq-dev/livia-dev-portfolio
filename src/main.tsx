@@ -13,6 +13,11 @@ import './styles.css'
 import './hero.css'
 import './header.css'
 import './marquee.css'
+import './about.css'
+import './skills.css'
+import './experience.css'
+import './projects.css'
+import './layout.css'
 import App from './App'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>)

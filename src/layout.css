@@ -1,0 +1,16 @@
+:root {
+  --content-gutter: max(var(--site-gutter), calc((100% - 1280px) / 2));
+}
+
+/* Keep every content section aligned with the hero while backgrounds stay full width. */
+.shell {
+  width: calc(100% - var(--content-gutter) - var(--content-gutter));
+}
+
+.hero.shell {
+  padding-inline: var(--content-gutter);
+}
+
+.section-title__accent {
+  color: #a700f1;
+}

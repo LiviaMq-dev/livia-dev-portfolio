@@ -38,7 +38,8 @@ export function Header() {
     const updateVisibility = () => {
       frame = 0
       const currentY = window.scrollY
-      if (currentY <= 120 || open || moreOpen || headerRef.current?.contains(document.activeElement)) {
+      const keyboardFocusInHeader = document.activeElement?.matches(':focus-visible') && headerRef.current?.contains(document.activeElement)
+      if (currentY <= 120 || open || moreOpen || keyboardFocusInHeader) {
         setHidden(false)
         lastY = currentY
         return
