@@ -21,7 +21,9 @@
   transform: translateX(-50%);
 }
 
-.project-showcase { margin-top: clamp(84px, 8vw, 120px); }
+.project-showcase {
+  margin-top: clamp(84px, 8vw, 120px);
+}
 
 .project-showcase__track {
   display: grid;
@@ -57,14 +59,20 @@
 
 .project-card__preview {
   position: relative;
-  display: grid;
-  place-items: center;
+  width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-bottom: 1px solid #41334e;
 }
 
-.project-card__preview img { width: 100%; height: 100%; object-fit: cover; }
+.project-card__preview img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .project-card__info {
   display: flex;
@@ -99,6 +107,11 @@
 }
 .project-card__info button:hover { color: #fff; }
 
+@media (min-width: 1300px) {
+  .project-card__preview { max-height: 190px; }
+  .project-card__info { height: 185px; min-height: 0; padding: 15px 20px 17px; }
+}
+
 .project-showcase__controls { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 10px; }
 .project-showcase__arrow { display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border: 1px solid #684279; border-radius: 50%; background: #171020; color: #c881eb; transition: border-color .2s ease, background-color .2s ease, color .2s ease; }
 .project-showcase__arrow:hover:not(:disabled) { border-color: #b770e1; background: #30173e; color: #fff; }
@@ -114,6 +127,8 @@
   max-height: calc(100dvh - 36px);
   padding: 0;
   overflow: auto;
+  scrollbar-width: none;
+  overscroll-behavior: contain;
   border: 1px solid #6b3b83;
   border-radius: 16px;
   background: #130d1b;
@@ -121,10 +136,24 @@
   box-shadow: 0 28px 90px rgba(0, 0, 0, .6);
 }
 
+.project-dialog::-webkit-scrollbar,
+.project-dialog__thumbnails::-webkit-scrollbar { display: none; }
+
 .project-dialog::backdrop { background: rgba(0, 0, 0, .78); backdrop-filter: blur(6px); }
 .project-dialog__close { position: absolute; z-index: 1; top: 14px; right: 14px; display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid rgba(255, 255, 255, .4); border-radius: 50%; background: rgba(19, 13, 27, .85); color: #fff; }
 .project-dialog__close:hover { background: #a700f1; }
-.project-dialog__image { display: block; width: 100%; max-height: 360px; object-fit: cover; object-position: top; border-bottom: 1px solid #493052; }
+.project-dialog__gallery { position: relative; background: #09070d; user-select: none; -webkit-user-select: none; }
+.project-dialog__image { display: block; width: 100%; max-height: 360px; aspect-ratio: 16 / 9; object-fit: contain; border-bottom: 1px solid #493052; -webkit-user-drag: none; }
+.project-dialog__gallery-arrow { position: absolute; top: 50%; display: grid; place-items: center; width: 38px; height: 38px; padding: 0; border: 1px solid #8553a0; border-radius: 50%; background: rgba(19, 13, 27, .85); color: #fff; transform: translateY(-50%); user-select: none; -webkit-user-select: none; touch-action: manipulation; }
+.project-dialog__gallery-arrow:hover { background: #713199; }
+.project-dialog__gallery-arrow--prev { left: 14px; }
+.project-dialog__gallery-arrow--next { right: 14px; }
+.project-dialog__gallery-count { position: absolute; right: 16px; bottom: 14px; padding: 4px 8px; border-radius: 4px; background: rgba(19, 13, 27, .85); color: #fff; font-family: 'Space Mono', monospace; font-size: 11px; }
+.project-dialog__thumbnails { position: relative; display: flex; gap: 10px; overflow-x: auto; padding: 14px 18px; border-bottom: 1px solid #493052; scrollbar-width: none; user-select: none; -webkit-user-select: none; }
+.project-dialog__thumbnails button { flex: 0 0 88px; height: 54px; overflow: hidden; padding: 0; border: 2px solid transparent; border-radius: 5px; background: #09070d; opacity: .68; }
+.project-dialog__thumbnails button:hover,
+.project-dialog__thumbnails button.is-active { border-color: #a700f1; opacity: 1; }
+.project-dialog__thumbnails img { display: block; width: 100%; height: 100%; object-fit: cover; -webkit-user-drag: none; }
 .project-dialog__body { padding: clamp(24px, 4vw, 40px); }
 .project-dialog__period { color: #b77ad2; font-family: 'Space Mono', monospace; font-size: 12px; }
 .project-dialog__body h2 { margin: 10px 0 22px; font-family: 'Space Grotesk', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 500; letter-spacing: -.05em; }

@@ -5,10 +5,12 @@ import { portfolio } from '../data/portfolio'
 export function ProjectsShowcase() {
   const projects = portfolio.projects
   const listRef = useRef<HTMLDivElement>(null)
+  const thumbnailsRef = useRef<HTMLDivElement>(null)
   const dialogRef = useRef<HTMLDialogElement>(null)
   const [selected, setSelected] = useState<number | null>(null)
   const [hovered, setHovered] = useState<number | null>(null)
   const [activeProject, setActiveProject] = useState<number | null>(null)
+  const [activeImage, setActiveImage] = useState(0)
   const [scrollLimits, setScrollLimits] = useState({ prev: false, next: false })
   const highlighted = hovered ?? selected
 
@@ -34,6 +36,15 @@ export function ProjectsShowcase() {
     updateScrollLimits()
     return () => observer.disconnect()
   }, [])
+
+  useEffect(() => {
+    const strip = thumbnailsRef.current
+    const thumbnail = strip?.children[activeImage] as HTMLElement | undefined
+    if (!strip || !thumbnail) return
+    const left = thumbnail.offsetLeft - (strip.clientWidth - thumbnail.clientWidth) / 2
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    strip.scrollTo({ left, behavior: reduceMotion ? 'instant' : 'smooth' })
+  }, [activeImage, activeProject])
 
   const moveCarousel = (direction: -1 | 1) => {
     const list = listRef.current
@@ -69,6 +80,14 @@ export function ProjectsShowcase() {
   }
 
   const projectInDialog = activeProject === null ? null : projects[activeProject]
+  const projectImages = projectInDialog
+    ? [{ src: projectInDialog.image, alt: projectInDialog.imageAlt }, ...(projectInDialog.gallery ?? [])]
+    : []
+
+  const openProject = (index: number) => {
+    setActiveImage(0)
+    setActiveProject(index)
+  }
 
   return <div className="project-showcase">
     <div className="project-showcase__track" ref={listRef} onScroll={() => { updateSelectedOnScroll(); updateScrollLimits() }}>
@@ -90,7 +109,7 @@ export function ProjectsShowcase() {
           <span className="project-card__period">{project.period}</span>
           <h3>{project.title}</h3>
           <p>{project.summary}</p>
-          <button type="button" onClick={() => setActiveProject(index)}>Ver detalhes <ArrowUpRight size={15} aria-hidden="true" /></button>
+          <button type="button" onClick={() => openProject(index)}>Ver detalhes <ArrowUpRight size={15} aria-hidden="true" /></button>
         </div>
       </article>)}
     </div>
@@ -105,7 +124,17 @@ export function ProjectsShowcase() {
     <dialog className="project-dialog" ref={dialogRef} aria-labelledby="project-dialog-title" onClose={() => setActiveProject(null)}>
       {projectInDialog && <>
         <button className="project-dialog__close" type="button" aria-label="Fechar detalhes do projeto" onClick={() => dialogRef.current?.close()}><X size={22} /></button>
-        <img className="project-dialog__image" src={projectInDialog.image} alt={projectInDialog.imageAlt} />
+        <div className="project-dialog__gallery">
+          <img className="project-dialog__image" src={projectImages[activeImage].src} alt={projectImages[activeImage].alt} draggable={false} />
+          {projectImages.length > 1 && <>
+            <button className="project-dialog__gallery-arrow project-dialog__gallery-arrow--prev" type="button" aria-label="Imagem anterior" onClick={() => setActiveImage(index => (index - 1 + projectImages.length) % projectImages.length)}><ChevronLeft size={20} aria-hidden="true" /></button>
+            <button className="project-dialog__gallery-arrow project-dialog__gallery-arrow--next" type="button" aria-label="Próxima imagem" onClick={() => setActiveImage(index => (index + 1) % projectImages.length)}><ChevronRight size={20} aria-hidden="true" /></button>
+            <span className="project-dialog__gallery-count">{activeImage + 1} / {projectImages.length}</span>
+          </>}
+        </div>
+        {projectImages.length > 1 && <div className="project-dialog__thumbnails" ref={thumbnailsRef} aria-label="Imagens do projeto">
+          {projectImages.map((image, index) => <button key={image.src} className={activeImage === index ? 'is-active' : ''} type="button" aria-label={`Ver imagem ${index + 1} de ${projectImages.length}`} aria-pressed={activeImage === index} onClick={() => setActiveImage(index)}><img src={image.src} alt="" loading="lazy" draggable={false} /></button>)}
+        </div>}
         <div className="project-dialog__body">
           <span className="project-dialog__period">{projectInDialog.period}</span>
           <h2 id="project-dialog-title">{projectInDialog.title}</h2>

@@ -6,6 +6,7 @@ export type Project = {
   period: string
   image: string
   imageAlt: string
+  gallery?: { src: string; alt: string }[]
   details: string[]
   technologies: string[]
   href?: string
@@ -41,15 +42,26 @@ export const portfolio = {
     {
       title: 'Bibliotech',
       summary: 'Aplicativo desktop para gestão de salas de leitura escolares, acervo e empréstimos.',
-      period: 'Ago — Nov 2026',
+      period: 'Projeto acadêmico',
       image: '/projects/bibliotech.png',
       imageAlt: 'Tela de visão geral do Bibliotech, com menu lateral e indicadores do acervo',
+      gallery: [
+        { src: '/projects/bibliotech-management.png', alt: 'Tela de Gestão do Bibliotech com acessos para cadastro, catálogo e empréstimos' },
+        { src: '/projects/bibliotech-catalog.png', alt: 'Tela de Acervo do Bibliotech com indicadores e catálogo de livros' },
+        { src: '/projects/bibliotech-reports.png', alt: 'Tela de Relatórios do Bibliotech com opções de análises da biblioteca' },
+        { src: '/projects/bibliotech-help.png', alt: 'Central de ajuda do Bibliotech com funções do sistema e links para tutoriais' },
+        { src: '/projects/bibliotech-about.png', alt: 'Tela Sobre o Bibliotech com apresentação e créditos da equipe' },
+        { src: '/projects/bibliotech-dark.png', alt: 'Visão geral do Bibliotech com o tema escuro ativado' },
+        { src: '/projects/bibliotech-splash.png', alt: 'Tela de abertura azul do aplicativo Bibliotech' },
+      ],
       details: [
         'Aplicativo desktop para gestão de salas de leitura escolares, com controle de acervo, empréstimos, devoluções e relatórios. Funciona offline no Windows.',
         'A visão geral reúne indicadores do acervo, empréstimos ativos e devoluções atrasadas, além de atalhos para as principais funcionalidades.',
         'Atuei no desenvolvimento do front-end com HTML, CSS e JavaScript, construindo telas e integrando-as ao Electron. Projeto acadêmico em equipe na Universidade Cruzeiro do Sul.',
+        'A prévia web permite explorar as telas e o visual do projeto; os recursos de cadastro e banco de dados ficam disponíveis apenas no aplicativo desktop.',
       ],
       technologies: ['HTML', 'CSS', 'JavaScript', 'Electron', 'Node.js', 'SQLite', 'Git', 'GitHub'],
+      href: 'https://liviamq-dev.github.io/Bibliotech/',
     },
     {
       title: 'Site institucional responsivo',
@@ -57,6 +69,10 @@ export const portfolio = {
       period: 'Jul 2026',
       image: '/projects/site-institucional.png',
       imageAlt: 'Página inicial do site de reabilitação animal com chamada principal e foto de cachorro',
+      gallery: [
+        { src: '/projects/site-institucional-indicacoes.png', alt: 'Página de indicações para fisioterapia e reabilitação animal com cartões de cães e gato' },
+        { src: '/projects/site-institucional-servicos.png', alt: 'Página de serviços de fisioterapia animal com quatro tratamentos em cartões' },
+      ],
       details: [
         'Desenvolvimento de site institucional responsivo para profissional de fisioterapia e reabilitação animal, com identidade visual personalizada e navegação intuitiva.',
         'O projeto inclui otimização para dispositivos móveis, boas práticas de SEO e integração com o Google Search Console para acompanhar desempenho e indexação.',
@@ -70,26 +86,17 @@ export const portfolio = {
       period: 'TCC em grupo',
       image: '/projects/mindover.png',
       imageAlt: 'Cena do jogo MindOver em uma floresta, com a personagem diante de uma criatura',
+      gallery: [
+        { src: '/projects/mindover-intro.png', alt: 'Tela inicial ilustrada do MindOver, com um computador e objetos sobre a mesa' },
+        { src: '/projects/mindover-castle.png', alt: 'Cena do MindOver com a personagem diante de um castelo e outra personagem' },
+        { src: '/projects/mindover-forest.png', alt: 'Fase de floresta do MindOver com plataformas e um obstáculo suspenso' },
+      ],
       details: [
         'Jogo de plataforma 2D desenvolvido em equipe como Trabalho de Conclusão de Curso. Na história, quatro desenvolvedores são transportados para dentro de um computador e enfrentam desafios relacionados às próprias emoções.',
         'O projeto reuniu desenvolvimento de jogos, programação e trabalho em equipe.',
       ],
       technologies: ['Jogo 2D', 'Programação', 'Trabalho em equipe'],
       href: 'https://mura-173.itch.io/mindover',
-    },
-    {
-      title: 'Calculadora',
-      summary: 'Calculadora web responsiva com interface adaptável e tratamento de erros.',
-      period: 'Fev 2026',
-      image: '/projects/calculadora.png?v=de53742'
-      imageAlt: 'Calculadora clara com teclas arredondadas e visor digital',
-      details: [
-        'Calculadora web responsiva desenvolvida com HTML, CSS e JavaScript, com interface adaptável para desktop, tablet e celular.',
-        'Implementa operações matemáticas, porcentagem, ponto decimal, limpar e apagar o último caractere. Inclui tratamento de divisão por zero e operações indefinidas.',
-        'O desenvolvimento envolveu manipulação do DOM, eventos de clique, controle de fluxo e ajustes de experiência para dispositivos móveis.',
-      ],
-      technologies: ['HTML', 'CSS', 'JavaScript', 'DOM', 'Design responsivo'],
-      href: 'https://liviamq-dev.github.io/Calculator/'
     },
     {
       title: 'CamCore',
@@ -103,6 +110,20 @@ export const portfolio = {
       ],
       technologies: ['Python', 'Flask', 'YOLOv8', 'OpenCV', 'SQLite', 'HTML', 'CSS', 'JavaScript'],
       href: 'https://github.com/mmmaryae/capacete',
+    },
+    {
+      title: 'Calculadora',
+      summary: 'Calculadora web responsiva com interface adaptável e tratamento de erros.',
+      period: 'Fev 2026',
+      image: '/projects/calculadora.png?v=de53742',
+      imageAlt: 'Calculadora clara com teclas arredondadas e visor digital',
+      details: [
+        'Calculadora web responsiva desenvolvida com HTML, CSS e JavaScript, com interface adaptável para desktop, tablet e celular.',
+        'Implementa operações matemáticas, porcentagem, ponto decimal, limpar e apagar o último caractere. Inclui tratamento de divisão por zero e operações indefinidas.',
+        'O desenvolvimento envolveu manipulação do DOM, eventos de clique, controle de fluxo e ajustes de experiência para dispositivos móveis.',
+      ],
+      technologies: ['HTML', 'CSS', 'JavaScript', 'DOM', 'Design responsivo'],
+      href: 'https://liviamq-dev.github.io/Calculator/',
     },
   ] as Project[],
   experience: [
