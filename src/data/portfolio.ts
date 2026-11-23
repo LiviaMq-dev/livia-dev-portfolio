@@ -64,6 +64,19 @@ export const portfolio = {
       technologies: ['Design responsivo', 'SEO', 'Google Search Console'],
     },
     {
+      title: 'MindOver',
+      summary: 'Jogo de plataforma 2D com ação, aventura e desafios ligados às emoções.',
+      period: 'TCC em grupo',
+      image: '/projects/mindover.png',
+      imageAlt: 'Cena do jogo MindOver em uma floresta, com a personagem diante de uma criatura',
+      details: [
+        'Jogo de plataforma 2D desenvolvido em equipe como Trabalho de Conclusão de Curso. Na história, quatro desenvolvedores são transportados para dentro de um computador e enfrentam desafios relacionados às próprias emoções.',
+        'O projeto reuniu desenvolvimento de jogos, programação e trabalho em equipe.',
+      ],
+      technologies: ['Jogo 2D', 'Programação', 'Trabalho em equipe'],
+      href: 'https://mura-173.itch.io/mindover',
+    },
+    {
       title: 'Calculadora',
       summary: 'Calculadora web responsiva com interface adaptável e tratamento de erros.',
       period: 'Fev 2026',
