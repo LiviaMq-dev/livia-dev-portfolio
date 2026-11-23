@@ -62,6 +62,7 @@ export const portfolio = {
         'O projeto inclui otimização para dispositivos móveis, boas práticas de SEO e integração com o Google Search Console para acompanhar desempenho e indexação.',
       ],
       technologies: ['Design responsivo', 'SEO', 'Google Search Console'],
+      href: 'https://dra-isabellaguimaraesvet.netlify.app/',
     },
     {
       title: 'MindOver',
