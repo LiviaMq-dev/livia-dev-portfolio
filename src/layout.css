@@ -14,3 +14,62 @@
 .section-title__accent {
   color: #a700f1;
 }
+
+/* Desktop proportions should read comfortably at the browser's normal zoom. */
+@media (min-width: 901px) {
+  .section { padding-block: clamp(72px, 7vw, 112px); }
+  .section-title { padding-bottom: 34px; }
+  .section-title h2 { font-size: clamp(34px, 3.2vw, 48px); }
+
+  .hero.shell {
+    min-height: min(570px, calc(100svh - 78px));
+    padding-block: clamp(56px, 6vw, 82px);
+  }
+  .hero__intro { margin-bottom: 19px; font-size: clamp(23px, 2.2vw, 29px); }
+  .hero h1 { margin-bottom: 25px; font-size: clamp(44px, 4vw, 56px); }
+  .hero__lead { font-size: clamp(14px, 1.2vw, 16px); }
+  .hero__actions { margin-top: 38px; }
+  .hero__cv { min-width: 205px; min-height: 50px; font-size: 15px; }
+  .hero__socials button { width: 46px; height: 46px; }
+
+  .about-me { padding-block: clamp(72px, 7.5vw, 112px); }
+  .about-me__label { margin-bottom: 32px; }
+  .about-me__visual { max-width: 405px; }
+  .about-me__heading h2 { font-size: clamp(38px, 3.5vw, 52px); }
+  .about-me__rule { margin-top: 24px; }
+  .about-me__content { margin-top: 26px; }
+  .about-me__content p { margin-bottom: 19px; font-size: clamp(14px, 1.1vw, 16px); line-height: 1.65; }
+  .about-me__contact { min-height: 44px; margin-top: 12px; font-size: 12px; }
+
+  .skills-accordion { margin-top: 36px; }
+  .skill-category__trigger { grid-template-columns: 56px 34px minmax(0, 1fr) 24px; gap: 14px; min-height: 56px; padding-block: 8px; }
+  .skill-category__trigger svg:not(.skill-category__chevron) { width: 20px; height: 20px; }
+  .skill-category__label { font-size: clamp(15px, 1.3vw, 18px); }
+  .skill-category__tools { gap: 8px; padding: 0 4px 16px 122px; }
+  .skill-category__tool { min-height: 32px; gap: 7px; padding: 5px 11px; font-size: 11px; }
+  .skill-category__tool svg,
+  .skill-category__tool img { width: 16px; height: 16px; }
+
+  .experience-list { margin-top: 72px; }
+  .experience-item { padding-bottom: 44px; }
+  .experience-item__content { padding-bottom: 30px; }
+  .experience-item h3 { font-size: clamp(21px, 2.1vw, 28px); }
+  .experience-item__company { margin-bottom: 17px; font-size: 14px; }
+  .experience-item__description { font-size: 14px; line-height: 1.65; }
+
+  .project-showcase { margin-top: clamp(64px, 6vw, 88px); }
+  .project-card__info h3 { font-size: clamp(17px, 1.4vw, 20px); }
+  .project-card__info p { font-size: 12px; }
+
+  .certificates-gallery { margin-top: 44px; }
+  .certificate-card { min-height: 185px; padding: 19px; }
+  .certificate-card h3 { font-size: clamp(16px, 1.3vw, 19px); }
+
+  .services__grid { margin-top: 34px; }
+  .service { min-height: 145px; padding: 20px; }
+  .service h3 { font-size: clamp(17px, 1.4vw, 20px); }
+
+  .contact { padding-block: clamp(70px, 7vw, 106px); }
+  .contact h2 { font-size: clamp(44px, 4.5vw, 68px); }
+  .contact p { font-size: 14px; }
+}

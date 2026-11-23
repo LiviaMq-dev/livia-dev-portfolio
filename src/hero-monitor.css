@@ -1,0 +1,125 @@
+/* Monitor com código sendo digitado no lado direito da hero (só a partir de 900px). */
+.hero-monitor { display: none; }
+
+@media (min-width: 900px) {
+  .hero.shell { justify-content: space-between; gap: clamp(16px, 2.5vw, 40px); }
+  /* Texto e monitor dividem a largura. */
+  .hero.shell .hero__copy { flex: 1 1 0; min-width: 0; max-width: 600px; }
+  .hero-monitor {
+    display: block;
+    flex: .8 1 0;
+    min-width: 0;
+    max-width: 420px;
+    container-type: inline-size;
+  }
+}
+
+.hero-monitor__screen {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #3b2557;
+  border-radius: 10px;
+  background: #0b0712;
+  box-shadow:
+    0 0 0 8px #120c1b,
+    0 0 0 9px #2a1f36,
+    0 30px 90px -20px rgba(167, 0, 241, .45);
+}
+/* Reflexo sutil da tela */
+.hero-monitor__screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(255, 255, 255, .05), transparent 40%);
+  pointer-events: none;
+}
+
+.hero-monitor__bar {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  border-bottom: 1px solid #241834;
+  background: #110a1a;
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(9px, 2.2cqi, 12px);
+}
+.hero-monitor__tab {
+  padding: .7em 1.2em;
+  border-right: 1px solid #241834;
+  border-top: 2px solid #a700f1;
+  background: #0b0712;
+  color: #f1e3fb;
+}
+.hero-monitor__title { align-self: center; padding: 0 1.2em; color: #6e6e73; }
+
+.hero-monitor__code {
+  padding: 1em 0 1.2em;
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(9px, 2.55cqi, 13.5px);
+  line-height: 1.75;
+}
+.hero-monitor__line { display: flex; min-height: 1.75em; }
+.hero-monitor__number {
+  flex: none;
+  width: 3.2em;
+  padding-right: 1.1em;
+  color: #4a3a5a;
+  text-align: right;
+  user-select: none;
+}
+.hero-monitor__text { overflow: hidden; color: #e6e1ea; white-space: pre; }
+
+.hero-monitor__cursor {
+  display: inline-block;
+  width: .55em;
+  height: 1.15em;
+  margin-left: 1px;
+  vertical-align: -.2em;
+  background: #cf73f7;
+  box-shadow: 0 0 10px rgba(207, 115, 247, .8);
+  animation: monitor-caret 1s steps(1) infinite;
+}
+
+.tok-keyword { color: #cf73f7; }
+.tok-string { color: #f3c4ff; }
+.tok-function { color: #a8b4ff; }
+.tok-property { color: #e6e1ea; }
+.tok-comment { color: #6e6878; font-style: italic; }
+.tok-punct { color: #8a7f96; }
+
+.hero-monitor__status {
+  display: flex;
+  justify-content: space-between;
+  padding: .45em 1.2em;
+  background: #a700f1;
+  color: #fff;
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(8px, 2cqi, 11px);
+}
+
+/* Pé do monitor */
+.hero-monitor__stand {
+  display: grid;
+  justify-items: center;
+  margin-top: 9px;
+}
+.hero-monitor__stand::before {
+  content: '';
+  width: 16%;
+  height: 34px;
+  background: linear-gradient(180deg, #1c1328, #120c1b);
+  clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
+}
+.hero-monitor__stand span {
+  width: 38%;
+  height: 8px;
+  border-radius: 3px;
+  background: #1c1328;
+  box-shadow: 0 10px 30px -6px rgba(167, 0, 241, .35);
+}
+
+@keyframes monitor-caret { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-monitor__cursor { animation: none; }
+}

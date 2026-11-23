@@ -1,0 +1,32 @@
+/* Ritmo de fundos: as seções alternam entre preto puro e um roxo quase preto.
+   A sombra recortada estende o fundo até as bordas mesmo nas seções limitadas por .shell,
+   sem criar rolagem horizontal. */
+:root {
+  --bg-base: #000000;
+  --bg-alt: #0f0a18;
+  --line-alt: #1f1628;
+}
+
+#inicio, .marquee, #sobre, #habilidades, #experiencia, #projetos,
+#certificacoes, #formacao, #servicos, #contato, .footer {
+  background: var(--section-bg);
+  box-shadow: 0 0 0 100vmax var(--section-bg);
+  clip-path: inset(0 -100vmax);
+}
+
+#inicio, #sobre, #experiencia, #certificacoes, #servicos, .footer { --section-bg: var(--bg-base); }
+.marquee, #habilidades, #projetos, #formacao, #contato { --section-bg: var(--bg-alt); }
+
+/* Faixa de tecnologias: a troca de cor já separa a faixa; a borda fica sutil. */
+.marquee { border-color: var(--line-alt); }
+
+/* Superfícies dentro das seções roxas ficam um pouco acima do fundo, para não parecerem afundadas. */
+#contato .contact-form,
+#contato .chat-preview,
+#contato .contact-direct {
+  background-color: #150e20;
+  border-color: #2a1f36;
+}
+#projetos .project-card { background-color: #150e20; }
+#contato .contact-field input[type='text'],
+#contato .contact-field textarea { background-color: #0a0610; }

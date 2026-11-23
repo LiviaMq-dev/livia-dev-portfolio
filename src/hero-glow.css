@@ -1,0 +1,32 @@
+/* Luzes roxas suaves que se movem devagar no fundo da hero. */
+.hero.shell { position: relative; overflow: hidden; isolation: isolate; }
+.hero__copy { position: relative; z-index: 1; }
+
+.hero-glow { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.hero-glow span {
+  position: absolute;
+  width: var(--size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-color) 0%, transparent 68%);
+  opacity: var(--glow-opacity, .55);
+  will-change: transform;
+  animation: hero-glow-drift var(--duration) ease-in-out infinite alternate;
+}
+.hero-glow span:nth-child(1) { --size: clamp(320px, 42vw, 620px); --duration: 22s; top: -18%; left: -8%; }
+.hero-glow span:nth-child(2) { --size: clamp(280px, 36vw, 540px); --duration: 28s; top: 10%; right: -10%; animation-delay: -9s; }
+.hero-glow span:nth-child(3) { --size: clamp(240px, 30vw, 440px); --duration: 25s; bottom: -30%; left: 34%; animation-delay: -15s; }
+
+:root { --glow-color: rgba(167, 0, 241, .22); }
+:root[data-theme='light'] { --glow-color: rgba(167, 0, 241, .2); }
+
+@keyframes hero-glow-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(8vw, 6vh) scale(1.08); }
+  66% { transform: translate(-4vw, 10vh) scale(.94); }
+  100% { transform: translate(6vw, -4vh) scale(1.04); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow span { animation: none; }
+}

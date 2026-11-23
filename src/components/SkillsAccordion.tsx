@@ -1,4 +1,4 @@
-import { useState, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Braces, ChevronDown, Code2, Database, GitBranch, Layers3, Sparkles, Workflow } from 'lucide-react'
 import { FaJava } from 'react-icons/fa6'
 import { TbBrandCSharp, TbBrandCss3, TbBrandOpenai } from 'react-icons/tb'
@@ -61,19 +61,45 @@ const toolColors: Record<string, string> = {
 
 export function SkillsAccordion() {
   const [expanded, setExpanded] = useState<string[]>([])
+  const accordionRef = useRef<HTMLDivElement>(null)
+  const manuallyToggled = useRef(new Set<string>())
+
+  useEffect(() => {
+    const categories = accordionRef.current?.querySelectorAll<HTMLElement>('.skill-category')
+    if (!categories) return
+
+    const observer = new IntersectionObserver(entries => {
+      const visibleIds: string[] = []
+
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return
+        observer.unobserve(entry.target)
+        const id = (entry.target as HTMLElement).dataset.skillId
+        if (id && !manuallyToggled.current.has(id)) visibleIds.push(id)
+      })
+
+      if (visibleIds.length) {
+        setExpanded(current => [...new Set([...current, ...visibleIds])])
+      }
+    }, { rootMargin: '0px 0px -25% 0px', threshold: 0.35 })
+
+    categories.forEach(category => observer.observe(category))
+    return () => observer.disconnect()
+  }, [])
 
   function toggle(id: string) {
+    manuallyToggled.current.add(id)
     setExpanded(current => current.includes(id)
       ? current.filter(item => item !== id)
       : [...current, id])
   }
 
-  return <div className="skills-accordion">
+  return <div className="skills-accordion" ref={accordionRef}>
     {portfolio.skillAreas.map((area, index) => {
       const Icon = icons[index]
       const isExpanded = expanded.includes(area.id)
       const panelId = `skill-panel-${area.id}`
-      return <div className={`skill-category${isExpanded ? ' skill-category--open' : ''}`} key={area.id}>
+      return <div className={`skill-category${isExpanded ? ' skill-category--open' : ''}`} key={area.id} data-skill-id={area.id}>
         <button className="skill-category__trigger" type="button" aria-expanded={isExpanded} aria-controls={panelId} onClick={() => toggle(area.id)}>
           <span className="skill-category__number">0{index + 1}</span>
           <Icon size={24} strokeWidth={1.5} aria-hidden="true" />

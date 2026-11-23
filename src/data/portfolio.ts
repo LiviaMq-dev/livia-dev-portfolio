@@ -1,5 +1,7 @@
-export type Entry = { title: string; detail: string; meta?: string; href?: string }
+export type Education = { program: string; qualification: string; institution: string; period: string; status: string }
 export type Experience = { role: string; company: string; period: string; description: string }
+export type Certificate = { title: string; issuer: string; completed: string; hours: string; topics: string[]; document: string; verificationUrl?: string }
+export type Service = { id: string; title: string; summary: string; includes: string[]; tools: string[] }
 export type Project = {
   title: string
   summary: string
@@ -19,15 +21,15 @@ export const portfolio = {
     'I am currently pursuing a Technology degree in Systems Analysis and Development at Universidade Cruzeiro do Sul (UNICSUL), São Paulo – Brazil, and I complement my education with technical courses and hands-on projects. I am seeking opportunities to apply my skills in real-world projects, grow technically, and contribute with efficient and well-structured solutions in the technology field.',
   ],
   navigation: [
-    { label: 'Início', href: '#inicio' },
-    { label: 'Sobre', href: '#sobre' },
-    { label: 'Habilidades', href: '#habilidades' },
-    { label: 'Experiência', href: '#experiencia' },
-    { label: 'Projetos', href: '#projetos' },
-    { label: 'Cursos', href: '#certificacoes' },
-    { label: 'Formação', href: '#formacao' },
-    { label: 'Serviços', href: '#servicos' },
-    { label: 'Contato', href: '#contato' },
+    { label: 'Home', href: '#inicio' },
+    { label: 'About', href: '#sobre' },
+    { label: 'Skills', href: '#habilidades' },
+    { label: 'Experience', href: '#experiencia' },
+    { label: 'Projects', href: '#projetos' },
+    { label: 'Courses', href: '#certificacoes' },
+    { label: 'Education', href: '#formacao' },
+    { label: 'Services', href: '#servicos' },
+    { label: 'Contact', href: '#contato' },
   ],
   skillAreas: [
     { id: 'frontend', label: 'Front-end development', tools: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'WordPress', 'Elementor'] },
@@ -107,9 +109,10 @@ export const portfolio = {
       details: [
         'O CamCore analisa imagens da webcam para detectar a ausência de capacete. Se a situação durar 3 segundos, emite um alerta, salva uma foto e registra a ocorrência com data e hora. Gestores podem consultar o histórico em um painel de relatórios.',
         'Atuei no desenvolvimento do front-end e na integração da IA, criando interfaces responsivas e conectando-as ao backend Flask. Projeto acadêmico desenvolvido em equipe.',
+        'A prévia web apresenta as telas do projeto. A detecção por IA, o cadastro e os relatórios com dados reais dependem do servidor Flask.',
       ],
       technologies: ['Python', 'Flask', 'YOLOv8', 'OpenCV', 'SQLite', 'HTML', 'CSS', 'JavaScript'],
-      href: 'https://github.com/mmmaryae/capacete',
+      href: 'https://liviamq-dev.github.io/camcore-web-preview/',
     },
     {
       title: 'Calculadora',
@@ -146,11 +149,76 @@ export const portfolio = {
       description: 'Apoio na triagem e no preenchimento das informações dos pacientes durante campanhas de atendimento optométrico.',
     },
   ] as Experience[],
-  certifications: [] as Entry[],
-  education: [] as Entry[],
+  certifications: [
+    {
+      title: 'Formação Inteligência Artificial: Do Zero ao Avançado',
+      issuer: 'Udemy',
+      completed: 'Nov 17, 2026',
+      hours: '24.5 hours',
+      topics: ['AI', 'Fundamentals', 'Advanced'],
+      document: '/certificates/ai-udemy.pdf',
+      verificationUrl: 'https://ude.my/UC-49ff90f9-0a6a-4054-bcae-03a85ff239f2',
+    },
+    {
+      title: 'Web Frontend Fundamentos: HTML5, CSS3, JavaScript + 10 Projetos',
+      issuer: 'Udemy',
+      completed: 'Nov 10, 2026',
+      hours: '132.5 hours',
+      topics: ['HTML5', 'CSS3', 'JavaScript', 'Projects'],
+      document: '/certificates/web-frontend-udemy.pdf',
+      verificationUrl: 'https://ude.my/UC-a24a0e5a-8cad-4eaa-a8fd-3fee6b00f9e5',
+    },
+    {
+      title: 'Banco de Dados SQL do Zero ao Avançado + Projetos Reais',
+      issuer: 'Udemy',
+      completed: 'Feb 22, 2026',
+      hours: '8 hours',
+      topics: ['SQL', 'Databases', 'Projects'],
+      document: '/certificates/sql-udemy.pdf',
+      verificationUrl: 'https://ude.my/UC-7e4df31d-034b-4382-aed2-e7c8a6685b25',
+    },
+    {
+      title: 'Jornada Python',
+      issuer: 'Hashtag Treinamentos',
+      completed: 'Jan 15, 2026',
+      hours: '8 hours',
+      topics: ['Python', 'Programming'],
+      document: '/certificates/jornada-python.jpg',
+    },
+    {
+      title: 'Python - Basic Module',
+      issuer: 'Huawei Talent Online',
+      completed: 'Mar 3, 2025',
+      hours: '32 hours',
+      topics: ['Python'],
+      document: '/certificates/python-huawei.pdf',
+    },
+  ] as Certificate[],
+  education: [
+    {
+      program: 'Análise e Desenvolvimento de Sistemas',
+      qualification: 'Tecnólogo',
+      institution: 'Universidade Cruzeiro do Sul (UNICSUL)',
+      period: '2025 — 2026',
+      status: '4º semestre',
+    },
+    {
+      program: 'Programação de Jogos Digitais',
+      qualification: 'Ensino médio técnico',
+      institution: 'ETEC Professor Adhemar Batista Heméritas',
+      period: '2022 — 2024',
+      status: 'Concluído',
+    },
+  ] as Education[],
+  // Serviços em avaliação: descrições de escopo editáveis, ainda não confirmadas como oferta pela Livia.
   services: [
-    'Desenvolvimento de sites', 'Criação de portfólios', 'Automações de processos',
-    'Integrações de sistemas', 'Soluções com inteligência artificial', 'Ferramentas personalizadas',
-  ],
-  contacts: { email: '', github: '', linkedin: '', whatsapp: '' },
+    { id: 'websites', title: 'Website development', summary: 'Responsive websites for businesses and professionals, from single landing pages to complete institutional sites.', includes: ['Layouts that adapt to mobile, tablet and desktop', 'Basic SEO and performance setup', 'Contact channels and social links integrated'], tools: ['HTML5', 'CSS3', 'JavaScript', 'WordPress', 'Elementor'] },
+    { id: 'portfolios', title: 'Portfolio creation', summary: 'Personal sites that present your work, background and contact channels with a clear visual identity.', includes: ['Sections for projects, courses and experience', 'Your visual identity applied to the layout', 'Content structure that is easy to update'], tools: ['HTML5', 'CSS3', 'JavaScript', 'Canva'] },
+    { id: 'automation', title: 'Process automation', summary: 'Repetitive tasks turned into automated flows, mapped clearly before anything is built.', includes: ['Process mapping with BPMN', 'Automated workflows with n8n', 'Notifications and scheduled routines'], tools: ['n8n', 'BPMN', 'Python'] },
+    { id: 'integrations', title: 'System integrations', summary: 'Connecting the tools you already use so data moves between them without manual copying.', includes: ['Integrations through APIs and webhooks', 'Data synchronization between platforms', 'Clear records of what was sent and when'], tools: ['n8n', 'Node.js', 'Python', 'SQL'] },
+    { id: 'ai', title: 'AI-powered solutions', summary: 'Practical use of AI assistants in everyday work, from support tasks to document handling.', includes: ['AI assistants for support and internal tasks', 'Content and document automation', 'Prompt and workflow design'], tools: ['Claude', 'Codex', 'Python'] },
+    { id: 'tools', title: 'Custom tools', summary: 'Small internal systems built around a specific need, such as registries, forms and simple dashboards.', includes: ['Requirements gathered with you first', 'Database modeling', 'Simple, documented interfaces'], tools: ['Python', 'Java', 'C#', 'MySQL'] },
+  ] as Service[],
+  contacts: { email: 'biolivia1206@icloud.com', github: '', linkedin: '', instagram: '', whatsapp: '5511971017655' },
+  contactReasons: ['Project quote', 'Job opportunity', 'Partnership', 'Question', 'Other'],
 }

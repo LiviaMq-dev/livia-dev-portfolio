@@ -1,0 +1,94 @@
+/* Circuito animado no lado direito da hero (só a partir de 900px). */
+.hero-circuit { display: none; }
+
+@media (min-width: 900px) {
+  .hero.shell { justify-content: space-between; gap: clamp(16px, 2.5vw, 40px); }
+  /* Texto e circuito dividem a largura (circuito um pouco maior), em vez de o circuito ficar só com a sobra. */
+  .hero.shell .hero__copy { flex: 1 1 0; min-width: 0; max-width: 600px; }
+  /* O desenho cresce até 520px. */
+  .hero-circuit {
+    display: block;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 520px;
+  }
+  .hero-circuit svg { display: block; width: 100%; height: auto; overflow: visible; }
+}
+
+.hero-circuit__traces path {
+  fill: none;
+  stroke: #2a1840;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.hero-circuit__pins path { stroke: #5b2c80; stroke-width: 2; stroke-linecap: round; }
+
+/* Pulso de luz: um traço de 10% do caminho que corre do chip até a ponta. */
+.hero-circuit__pulse {
+  fill: none;
+  stroke: #e2a6ff;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 10 110;
+  stroke-dashoffset: 10;
+  animation: circuit-pulse var(--dur) linear var(--delay) infinite;
+}
+.hero-circuit__pulse--glow { stroke: #a700f1; stroke-width: 8; opacity: .4; }
+
+.hero-circuit__node {
+  fill: #0b0612;
+  stroke: #5b2c80;
+  stroke-width: 2;
+  animation: circuit-node var(--dur) linear var(--delay) infinite;
+}
+
+.hero-circuit__chip { fill: #0e0818; stroke: #a700f1; stroke-width: 1.5; }
+.hero-circuit__chip-inner { fill: none; stroke: #3b1f57; stroke-width: 1; }
+.hero-circuit__label {
+  fill: #f1ddff;
+  font-family: 'Space Mono', monospace;
+  font-size: 38px;
+  font-weight: 700;
+}
+.hero-circuit__label--glow { fill: #a700f1; }
+
+.hero-circuit__halo {
+  fill: #a700f1;
+  opacity: .32;
+  animation: circuit-halo 4.5s ease-in-out infinite;
+}
+/* Moldura quadrada com tracejado correndo em volta do chip. */
+.hero-circuit__frame {
+  fill: none;
+  stroke: #a700f1;
+  stroke-width: 1.5;
+  stroke-dasharray: 3 9;
+  opacity: .45;
+  animation: circuit-frame 6s linear infinite;
+}
+
+.hero-circuit--paused * { animation-play-state: paused !important; }
+
+@keyframes circuit-pulse {
+  from { stroke-dashoffset: 10; }
+  to { stroke-dashoffset: -100; }
+}
+/* O ponto acende quando a frente do pulso chega à ponta (~91% do ciclo). */
+@keyframes circuit-node {
+  0%, 86% { fill: #0b0612; stroke: #5b2c80; }
+  92% { fill: #e9b8ff; stroke: #e9b8ff; }
+  100% { fill: #0b0612; stroke: #5b2c80; }
+}
+@keyframes circuit-halo {
+  0%, 100% { opacity: .2; }
+  50% { opacity: .4; }
+}
+@keyframes circuit-frame { to { stroke-dashoffset: -120; } }
+
+/* Movimento reduzido: o circuito fica estático e iluminado. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-circuit__pulse, .hero-circuit__node, .hero-circuit__halo, .hero-circuit__frame { animation: none; }
+  .hero-circuit__pulse { stroke-dasharray: none; opacity: .5; }
+  .hero-circuit__pulse--glow { opacity: .15; }
+}

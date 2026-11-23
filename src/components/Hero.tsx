@@ -48,6 +48,7 @@ export function Hero() {
   }, [])
 
   return <section className="hero shell" id="inicio" aria-labelledby="hero-title">
+    <div className="hero-glow" aria-hidden="true"><span /><span /><span /></div>
     <div className="hero__copy">
       <p className="hero__intro"><span className="sr-only">{lines[0]}</span><TypedLine index={0} progress={progress} /></p>
       <h1 id="hero-title"><span className="sr-only">Full Stack Developer</span><TypedLine index={1} progress={progress} /><TypedLine index={2} progress={progress} /></h1>

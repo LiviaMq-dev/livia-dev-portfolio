@@ -1,0 +1,263 @@
+/* Tema claro: fundo branco com roxo como destaque.
+   Ativado por <html data-theme="light">; cada regra sobrescreve a cor equivalente do tema escuro. */
+
+/* ---------- Botão de troca de tema (vale para os dois temas) ---------- */
+.theme-toggle {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(24, 12, 34, .28);
+  border-radius: 10px;
+  background: transparent;
+  color: #180c22;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+.theme-toggle:hover { border-color: #7d00b8; background: rgba(255, 255, 255, .35); color: #680093; }
+.theme-toggle svg { transition: transform .4s cubic-bezier(.2, .7, .2, 1); }
+.theme-toggle:hover svg { transform: rotate(-20deg); }
+@media (max-width: 1040px) {
+  .theme-toggle { margin-left: auto; }
+  .menu-toggle { margin-left: 0; }
+}
+
+/* Transição suave só durante a troca de tema */
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: background-color .3s ease, color .3s ease, border-color .3s ease, fill .3s ease, stroke .3s ease !important;
+}
+
+/* ---------- Tokens do tema claro ---------- */
+:root[data-theme='light'] {
+  --bg-base: #ffffff;
+  --bg-alt: #f1e6fb;
+  --line-alt: #e0cdf2;
+  --l-text: #1b1024;
+  --l-body: #463d50;
+  --l-muted: #6b6176;
+  --l-line: #e7def1;
+  --l-line-strong: #d6c6e6;
+  --l-accent: #8a00c4;
+  --l-tint: #f4e9fc;
+  color: var(--l-text);
+  background: #fff;
+  color-scheme: light;
+}
+:root[data-theme='light'] :focus-visible { outline-color: #a700f1; }
+
+/* Títulos de seção */
+:root[data-theme='light'] .section-title { border-bottom-color: var(--l-line); }
+:root[data-theme='light'] .section-title p { color: var(--l-muted); }
+
+/* ---------- Header ---------- */
+/* O header mantém a cápsula lilás do tema escuro, só com sombra mais leve. */
+:root[data-theme='light'] .header-inner.shell { box-shadow: 0 8px 28px rgba(80, 20, 120, .16), inset 0 1px 0 rgba(255, 255, 255, .35); }
+:root[data-theme='light'] .brand__symbol { color: #a700f1; }
+:root[data-theme='light'] .header-inner .brand__symbol { color: #7800ad; }
+:root[data-theme='light'] .brand { color: var(--l-text); }
+:root[data-theme='light'] .nav-more__panel,
+:root[data-theme='light'] .mobile-nav { box-shadow: 0 18px 30px rgba(80, 20, 120, .18); }
+
+/* ---------- Hero ---------- */
+:root[data-theme='light'] .hero__intro { color: var(--l-text); }
+:root[data-theme='light'] .hero h1,
+:root[data-theme='light'] .hero h1 .typewriter__text { background: linear-gradient(105deg, #6f17c9 5%, #a700f1 82%); background-clip: text; -webkit-background-clip: text; }
+:root[data-theme='light'] .hero__lead { color: var(--l-body); }
+:root[data-theme='light'] .hero__cv,
+:root[data-theme='light'] .hero__socials button { border-color: #a700f1; color: var(--l-accent); box-shadow: none; }
+:root[data-theme='light'] .hero__cv:hover,
+:root[data-theme='light'] .hero__socials button:hover { color: #fff; }
+:root[data-theme='light'] .hero__availability { color: var(--l-muted); }
+
+/* ---------- Faixa de tecnologias ---------- */
+:root[data-theme='light'] .marquee__item { color: var(--l-accent); }
+
+/* ---------- Sobre ---------- */
+:root[data-theme='light'] .about-me__visual { background: var(--l-tint); }
+:root[data-theme='light'] .about-me__visual span { color: #645574; }
+:root[data-theme='light'] .about-me__heading h2 { color: var(--l-text); }
+:root[data-theme='light'] .about-me__content p { color: var(--l-body); }
+:root[data-theme='light'] .about-me__contact { color: var(--l-accent); }
+:root[data-theme='light'] .about-me__contact:hover { color: #fff; }
+
+/* ---------- Habilidades ---------- */
+:root[data-theme='light'] .skill-card { border-color: #dcc5f0; background: #fbf7ff; }
+:root[data-theme='light'] .skill-card:hover { border-color: #b98ad9; }
+:root[data-theme='light'] .skill-card__icon { border-color: #dcc5f0; background: #ead9fa; color: var(--l-accent); }
+:root[data-theme='light'] .skill-card:hover .skill-card__icon { background: #a700f1; color: #fff; }
+:root[data-theme='light'] .skill-card h3 { color: var(--l-text); }
+:root[data-theme='light'] .skill-card__count { color: var(--l-muted); }
+:root[data-theme='light'] .skill-chip { border-color: #dcc5f0; background: #f4eafd; color: #2a1d35; }
+:root[data-theme='light'] .skill-chip:hover { border-color: #a700f1; background: #ead9fa; }
+/* Logos brancos (Codex, GitHub, Unity, Notion) ficam escuros no fundo claro */
+:root[data-theme='light'] .skill-chip[style*='#f5f5f5'] svg { color: #1b1024; }
+
+/* ---------- Experiência ---------- */
+:root[data-theme='light'] .experience-item__marker,
+:root[data-theme='light'] .experience-list--motion .experience-item__marker { box-shadow: 0 0 0 5px #fff; }
+:root[data-theme='light'] .experience-list--motion .experience-item.is-revealed .experience-item__marker { box-shadow: 0 0 0 5px #fff, 0 0 0 9px rgba(167, 0, 241, .14), 0 0 18px rgba(167, 0, 241, .35); }
+:root[data-theme='light'] .experience-item:not(:last-child)::before { background: linear-gradient(#a700f1, #e0cdee); }
+:root[data-theme='light'] .experience-item__content { border-bottom-color: var(--l-line); }
+:root[data-theme='light'] .experience-item h3 { color: var(--l-text); }
+:root[data-theme='light'] .experience-item__period { color: var(--l-muted); }
+:root[data-theme='light'] .experience-item__company { color: var(--l-accent); }
+:root[data-theme='light'] .experience-item__description { color: var(--l-body); }
+
+/* ---------- Projetos ---------- */
+:root[data-theme='light'] #projetos .project-card { border-color: var(--l-line-strong); background: #fff; }
+:root[data-theme='light'] #projetos .project-card--selected,
+:root[data-theme='light'] #projetos .project-card:hover { border-color: #b98ad9; }
+:root[data-theme='light'] .project-card__preview { border-bottom-color: var(--l-line); }
+:root[data-theme='light'] .project-card__period { color: var(--l-muted); }
+:root[data-theme='light'] .project-card__info h3 { color: var(--l-text); }
+:root[data-theme='light'] .project-card__info p { color: var(--l-body); }
+:root[data-theme='light'] .project-card__info button { color: var(--l-accent); }
+:root[data-theme='light'] .project-card__info button:hover { color: var(--l-text); }
+:root[data-theme='light'] .project-showcase__arrow { border-color: #dccbec; background: #fff; color: var(--l-accent); }
+:root[data-theme='light'] .project-showcase__arrow:hover:not(:disabled) { border-color: #a700f1; background: var(--l-tint); color: var(--l-text); }
+:root[data-theme='light'] .project-showcase__dots button::after { background: var(--l-line-strong); }
+:root[data-theme='light'] .project-showcase__dots button.is-active::after { background: #a700f1; }
+:root[data-theme='light'] .project-dialog { border-color: #e2d3f0; background: #fff; color: var(--l-text); box-shadow: 0 28px 90px rgba(60, 10, 100, .25); }
+:root[data-theme='light'] .project-dialog::backdrop { background: rgba(40, 20, 60, .45); }
+:root[data-theme='light'] .project-dialog__gallery,
+:root[data-theme='light'] .project-dialog__thumbnails button { background: #f4eef9; }
+:root[data-theme='light'] .project-dialog__image,
+:root[data-theme='light'] .project-dialog__thumbnails { border-bottom-color: var(--l-line); }
+:root[data-theme='light'] .project-dialog__period { color: var(--l-accent); }
+:root[data-theme='light'] .project-dialog__body p { color: var(--l-body); }
+:root[data-theme='light'] .project-dialog__technologies li { border-color: #dccbec; color: #5a2a7a; }
+:root[data-theme='light'] .project-dialog__link { color: var(--l-accent); }
+:root[data-theme='light'] .project-dialog__link:hover { color: var(--l-text); }
+
+/* ---------- Certificados ---------- */
+:root[data-theme='light'] .certificate-card { border-color: var(--l-line); background: #fff; box-shadow: 0 7px 24px rgba(80, 20, 120, .06); }
+:root[data-theme='light'] .certificate-card h3 { color: var(--l-text); }
+:root[data-theme='light'] .certificate-card__year { color: var(--l-accent); }
+:root[data-theme='light'] .certificate-card__issuer,
+:root[data-theme='light'] .certificate-card__issuer span { color: var(--l-muted); }
+:root[data-theme='light'] .certificate-card__topics li { border-color: #e2d3f0; background: #f6effc; color: #6d1fa3; }
+:root[data-theme='light'] .certificate-card__link { color: var(--l-accent); }
+:root[data-theme='light'] .certificate-card__link:focus-visible { color: var(--l-text); }
+
+/* ---------- Formação ---------- */
+:root[data-theme='light'] .education-axis__ticks span { border-left-color: #e2d3f0; color: var(--l-muted); }
+:root[data-theme='light'] .education-axis__tracks { border-bottom-color: var(--l-line); }
+:root[data-theme='light'] .education-axis__bar { border-color: #c49be8; background: #dcc0f5; }
+:root[data-theme='light'] .education-axis__bar span { color: #3f1260; }
+:root[data-theme='light'] .education-axis__bar--current { border-color: #a700f1; background: linear-gradient(90deg, #a700f1, #c25cf4); }
+:root[data-theme='light'] .education-axis__bar--current span { color: #fff; }
+:root[data-theme='light'] .education-card { border-color: #e2d3f0; background: #fff; }
+:root[data-theme='light'] .education-card:hover { border-color: #c9a3e8; }
+:root[data-theme='light'] .education-card__icon { border-color: #e2d3f0; background: var(--l-tint); color: var(--l-accent); }
+:root[data-theme='light'] .education-card__qualification { color: var(--l-accent); }
+:root[data-theme='light'] .education-card__status { border-color: #d6b8ee; background: var(--l-tint); color: #5a1a85; }
+:root[data-theme='light'] .education-card__status--done { border-color: #e2d3f0; background: transparent; color: #5d5468; }
+:root[data-theme='light'] .education-card__status--done svg { color: #a700f1; }
+:root[data-theme='light'] .education-card__pulse,
+:root[data-theme='light'] .education-card__pulse::after { background: #a700f1; }
+:root[data-theme='light'] .education-card h3 { color: var(--l-text); }
+:root[data-theme='light'] .education-card__facts li { color: var(--l-body); }
+:root[data-theme='light'] .education-card__facts svg { color: #a37cc0; }
+
+/* ---------- Serviços ---------- */
+:root[data-theme='light'] .service-item,
+:root[data-theme='light'] .service-item:first-child { border-color: var(--l-line); }
+:root[data-theme='light'] .service-item__trigger { color: var(--l-muted); }
+:root[data-theme='light'] .service-item__trigger:hover { color: #2a1d35; }
+:root[data-theme='light'] .service-item__icon { border-color: var(--l-line-strong); color: #a700f1; }
+:root[data-theme='light'] .service-item__arrow { color: #9a90a5; }
+:root[data-theme='light'] .service-item--active .service-item__trigger { color: var(--l-text); }
+:root[data-theme='light'] .service-item--active .service-item__icon { color: var(--l-accent); }
+:root[data-theme='light'] .service-item__detail { border-color: var(--l-line); background: #faf6fe; }
+:root[data-theme='light'] .service-item__glyph { color: rgba(167, 0, 241, .12); }
+:root[data-theme='light'] .service-item__summary { color: var(--l-text); }
+:root[data-theme='light'] .service-item__heading { color: var(--l-muted); }
+:root[data-theme='light'] .service-item__includes li { color: var(--l-body); }
+:root[data-theme='light'] .service-item__includes svg { color: #a700f1; }
+:root[data-theme='light'] .service-item__tools li { border-color: #e2d3f0; color: #4b1d6e; }
+:root[data-theme='light'] .service-item__cta { color: var(--l-accent); }
+:root[data-theme='light'] .service-item__cta:hover { color: #fff; }
+
+/* ---------- Contato ---------- */
+:root[data-theme='light'] .contact-intro__lead { color: var(--l-text); }
+:root[data-theme='light'] #contato .contact-form,
+:root[data-theme='light'] #contato .chat-preview,
+:root[data-theme='light'] #contato .contact-direct { border-color: var(--l-line); background: #fff; }
+:root[data-theme='light'] .chat-preview__header { border-bottom-color: var(--l-line); }
+:root[data-theme='light'] .chat-preview__header strong { color: var(--l-text); }
+:root[data-theme='light'] .chat-preview__header small,
+:root[data-theme='light'] .chat-preview__placeholder { color: var(--l-muted); }
+:root[data-theme='light'] .chat-preview__bubble { background: #efe0fb; color: #2a1d35; }
+:root[data-theme='light'] .chat-preview__meta { color: #7a6a8a; }
+:root[data-theme='light'] .chat-preview__meta svg { color: #a700f1; }
+:root[data-theme='light'] .contact-direct { color: var(--l-text); }
+:root[data-theme='light'] .contact-direct small,
+:root[data-theme='light'] .contact-direct > svg { color: var(--l-muted); }
+:root[data-theme='light'] .contact-direct__icon { color: #a700f1; }
+:root[data-theme='light'] .contact-field label,
+:root[data-theme='light'] .contact-field legend { color: #2a1d35; }
+:root[data-theme='light'] .contact-field__count { color: var(--l-muted); }
+:root[data-theme='light'] #contato .contact-field input[type='text'],
+:root[data-theme='light'] #contato .contact-field textarea { border-color: var(--l-line-strong); background: #fff; color: var(--l-text); }
+:root[data-theme='light'] .contact-field input::placeholder,
+:root[data-theme='light'] .contact-field textarea::placeholder { color: #9a90a5; }
+:root[data-theme='light'] #contato .contact-field [aria-invalid='true'] { border-color: #d6336c; }
+:root[data-theme='light'] .contact-field__error { color: #c2255c; }
+:root[data-theme='light'] .contact-reason span { border-color: var(--l-line-strong); color: var(--l-body); }
+:root[data-theme='light'] .contact-reason:hover span { border-color: #b98ad9; color: var(--l-text); }
+:root[data-theme='light'] .contact-reason input:checked + span { border-color: #a700f1; background: var(--l-tint); color: #5a1a85; }
+:root[data-theme='light'] .contact-reason input:checked + span::before { background: #a700f1; }
+:root[data-theme='light'] .contact-status p { color: var(--l-body); }
+:root[data-theme='light'] .contact-status a { color: var(--l-accent); }
+
+/* ---------- Rodapé ---------- */
+:root[data-theme='light'] .site-footer,
+:root[data-theme='light'] .site-footer__bottom { border-top-color: var(--l-line); }
+:root[data-theme='light'] .site-footer__tagline,
+:root[data-theme='light'] .site-footer__column h2,
+:root[data-theme='light'] .site-footer__socials a,
+:root[data-theme='light'] .site-footer__socials button { color: var(--l-accent); }
+:root[data-theme='light'] .site-footer__socials a:hover,
+:root[data-theme='light'] .site-footer__socials button:hover { color: #fff; }
+:root[data-theme='light'] .site-footer__links a,
+:root[data-theme='light'] .site-footer__contacts a { color: var(--l-body); }
+:root[data-theme='light'] .site-footer__links a:hover,
+:root[data-theme='light'] .site-footer__contacts a:hover { color: var(--l-text); }
+:root[data-theme='light'] .site-footer__bottom p { color: var(--l-body); }
+
+/* ---------- Containers em lilás (em vez de branco) ---------- */
+:root[data-theme='light'] {
+  --l-card: #f4eafd;
+  --l-card-alt: #fbf7ff;
+  --l-card-border: #dcc5f0;
+}
+/* Cards nas seções brancas: lilás */
+:root[data-theme='light'] .certificate-card,
+:root[data-theme='light'] .service-item__detail,
+:root[data-theme='light'] .about-me__visual { border-color: var(--l-card-border); background: var(--l-card); }
+:root[data-theme='light'] .project-showcase__arrow,
+:root[data-theme='light'] .service-item__icon { border-color: var(--l-card-border); background: var(--l-card); }
+:root[data-theme='light'] .project-showcase__arrow:hover:not(:disabled) { background: #ead9fa; }
+:root[data-theme='light'] .certificate-card__topics li,
+:root[data-theme='light'] .service-item__tools li,
+:root[data-theme='light'] .project-dialog__technologies li { border-color: #d3b9ec; background: #ead9fa; }
+/* Cards nas seções lilás: tom mais claro do mesmo roxo, para destacar do fundo */
+:root[data-theme='light'] #projetos .project-card,
+:root[data-theme='light'] .education-card,
+:root[data-theme='light'] #contato .contact-form,
+:root[data-theme='light'] #contato .chat-preview,
+:root[data-theme='light'] #contato .contact-direct { border-color: var(--l-card-border); background: var(--l-card-alt); }
+:root[data-theme='light'] .education-card__icon,
+:root[data-theme='light'] .education-card__status { background: #ead9fa; }
+:root[data-theme='light'] .contact-reason span { background: #f4eafd; }
+:root[data-theme='light'] .project-dialog { background: #fbf7ff; }
+:root[data-theme='light'] .project-dialog__gallery,
+:root[data-theme='light'] .project-dialog__thumbnails button { background: #efe2fb; }
+/* Faixa do copyright e rodapé */
+:root[data-theme='light'] .site-footer__bottom { background: var(--bg-alt); }
+/* Roxo pequeno sobre o lilás precisa ser um pouco mais escuro para manter contraste AA */
+:root[data-theme='light'] .section-title__index,
+:root[data-theme='light'] .marquee__star { color: var(--l-accent); }

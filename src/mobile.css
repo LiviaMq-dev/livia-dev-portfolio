@@ -1,0 +1,18 @@
+/* Mobile: hero e rodapé centralizados (até 760px). */
+@media (max-width: 760px) {
+  /* Hero */
+  .hero.shell { justify-content: center; text-align: center; }
+  .hero__copy { margin-inline: auto; }
+  .hero__lead,
+  .hero__availability { margin-inline: auto; }
+  .hero__actions { flex-direction: column; justify-content: center; }
+  .hero__socials { justify-content: center; }
+
+  /* Rodapé */
+  .site-footer__grid { justify-items: center; text-align: center; }
+  .site-footer__brand { display: grid; justify-items: center; }
+  .site-footer__socials { justify-content: center; }
+  .site-footer__column { display: grid; justify-items: center; }
+  .site-footer__links { justify-content: center; text-align: left; }
+  .site-footer__contacts { justify-items: center; }
+}

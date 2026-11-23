@@ -13,7 +13,7 @@ export function AboutMe() {
             <span className="about-me__rule" aria-hidden="true" />
           </div>
           <div className="about-me__content">
-            {portfolio.about.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+            {portfolio.about.map(paragraph => <p key={paragraph} lang="en">{paragraph}</p>)}
             <a className="about-me__contact" href="#contato">Let's Talk <ChevronsRight size={20} aria-hidden="true" /></a>
           </div>
         </div>

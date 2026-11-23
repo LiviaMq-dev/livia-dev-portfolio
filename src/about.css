@@ -49,6 +49,8 @@
 }
 .about-me__content { max-width: 720px; margin-top: 34px; }
 .about-me__content p {
+  text-align: justify;
+  hyphens: auto;
   margin: 0 0 26px;
   color: #d3cdd9;
   font-size: clamp(16px, 1.3vw, 18px);

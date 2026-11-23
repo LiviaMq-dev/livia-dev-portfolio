@@ -1,0 +1,84 @@
+/* Rodapé: marca + redes | menu | contato, com faixa de copyright embaixo. */
+.site-footer { padding: 0; border-top: 1px solid #1f1628; }
+
+.site-footer__grid {
+  display: grid;
+  gap: 44px;
+  padding-block: 64px 56px;
+}
+
+.site-footer__brand .brand { font-size: clamp(28px, 3vw, 34px); }
+.site-footer__tagline {
+  margin: 16px 0 24px;
+  color: #cf73f7;
+  font-size: 17px;
+  font-weight: 500;
+}
+.site-footer__socials { display: flex; gap: 14px; }
+.site-footer__socials a,
+.site-footer__socials button {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1.5px solid #a700f1;
+  border-radius: 50%;
+  background: transparent;
+  color: #cf73f7;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+/* Mesmo hover dos botões de redes da hero, inclusive enquanto o link ainda não existe. */
+.site-footer__socials a:hover,
+.site-footer__socials button:hover { border-color: #a700f1; background-color: #a700f1; color: #fff; }
+.site-footer__socials button:disabled { cursor: default; }
+
+.site-footer__column h2 {
+  margin: 0 0 20px;
+  color: #cf73f7;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -.02em;
+}
+.site-footer__links,
+.site-footer__contacts {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.site-footer__links a,
+.site-footer__contacts a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  color: #b9b4c0;
+  font-size: 15px;
+  transition: color .2s ease;
+}
+.site-footer__links svg { color: #a700f1; transition: transform .25s cubic-bezier(.2, .7, .2, 1); }
+.site-footer__links a:hover { color: #fff; }
+.site-footer__links { grid-template-rows: repeat(5, auto); grid-auto-flow: column; column-gap: 32px; justify-content: start; }
+.site-footer__links a:hover svg { transform: translateX(4px); }
+.site-footer__contacts svg { flex: none; color: #a700f1; }
+.site-footer__contacts a { overflow-wrap: anywhere; }
+.site-footer__contacts a:hover { color: #fff; }
+
+.site-footer__bottom {
+  border-top: 1px solid #1f1628;
+  background: var(--bg-alt, #0f0a18);
+}
+.site-footer__bottom p {
+  margin-block: 0;
+  padding-block: 18px;
+  color: #d6d3da;
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (min-width: 760px) {
+  .site-footer__grid { grid-template-columns: 1.3fr 1fr 1fr; gap: 32px; padding-block: 72px 64px; }
+}

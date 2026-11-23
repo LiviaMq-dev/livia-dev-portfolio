@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { Brand } from './Brand'
+import { ThemeToggle } from './ThemeToggle'
 import { portfolio } from '../data/portfolio'
 
 export function Header() {
@@ -58,17 +59,18 @@ export function Header() {
     }
   }, [open, moreOpen])
 
-  return <header ref={headerRef} className={`site-header ${hidden ? 'site-header--hidden' : ''}`} onFocusCapture={() => setHidden(false)}>
+  return <header ref={headerRef} lang="en" className={`site-header ${hidden ? 'site-header--hidden' : ''}`} onFocusCapture={() => setHidden(false)}>
     <div className="header-inner shell">
       <Brand compact />
-      <nav className="desktop-nav" aria-label="Navegação principal">
+      <nav className="desktop-nav" aria-label="Main navigation">
         {primary.map(item => <a key={item.href} href={item.href} aria-current={active === item.href ? 'location' : undefined}>{item.label}</a>)}
-        <div className={`nav-more ${moreOpen ? 'nav-more--open' : ''}`}><button type="button" aria-expanded={moreOpen} aria-controls="nav-more-panel" onClick={() => setMoreOpen(!moreOpen)}>Mais <span aria-hidden="true">⌄</span></button><div id="nav-more-panel" className="nav-more__panel">{secondary.map(item => <a key={item.href} href={item.href} onClick={() => setMoreOpen(false)}>{item.label}</a>)}</div></div>
+        <div className={`nav-more ${moreOpen ? 'nav-more--open' : ''}`}><button type="button" aria-expanded={moreOpen} aria-controls="nav-more-panel" onClick={() => setMoreOpen(!moreOpen)}>More <span aria-hidden="true">⌄</span></button><div id="nav-more-panel" className="nav-more__panel">{secondary.map(item => <a key={item.href} href={item.href} onClick={() => setMoreOpen(false)}>{item.label}</a>)}</div></div>
       </nav>
-      <a className="header-contact" href="#contato">Fale comigo <ArrowUpRight size={15} aria-hidden="true" /></a>
-      <button className="menu-toggle" type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? 'Fechar menu' : 'Abrir menu'}>{open ? <X /> : <Menu />}</button>
+      <a className="header-contact" href="#contato">Let's talk <ArrowUpRight size={15} aria-hidden="true" /></a>
+      <ThemeToggle />
+      <button className="menu-toggle" type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? 'Close menu' : 'Open menu'}>{open ? <X /> : <Menu />}</button>
     </div>
-    <nav id="mobile-menu" className={`mobile-nav ${open ? 'mobile-nav--open' : ''}`} aria-label="Navegação para celular" inert={!open}>
+    <nav id="mobile-menu" className={`mobile-nav ${open ? 'mobile-nav--open' : ''}`} aria-label="Mobile navigation" inert={!open}>
       {portfolio.navigation.map(item => <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>)}
     </nav>
   </header>

@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
+    <script>
+      // Aplica o tema salvo antes da renderização para evitar piscar o tema errado.
+      (function () {
+        var theme = 'dark'
+        try { if (localStorage.getItem('theme') === 'light') theme = 'light' } catch (e) {}
+        document.documentElement.dataset.theme = theme
+        if (theme === 'light') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+      })()
+    </script>
     <meta name="description" content="Livia.Dev — portfólio em construção sobre desenvolvimento, inteligência artificial e automações." />
     <meta property="og:title" content="Livia.Dev — Portfólio" />
     <meta property="og:description" content="Tecnologia com intenção. Conheça a estrutura inicial do portfólio Livia.Dev." />
