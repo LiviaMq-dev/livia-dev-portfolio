@@ -75,6 +75,7 @@ export const portfolio = {
         'O desenvolvimento envolveu manipulação do DOM, eventos de clique, controle de fluxo e ajustes de experiência para dispositivos móveis.',
       ],
       technologies: ['HTML', 'CSS', 'JavaScript', 'DOM', 'Design responsivo'],
+      href: 'https://liviamq-dev.github.io/Calculator/',
     },
     {
       title: 'CamCore',
