@@ -80,7 +80,7 @@ export const portfolio = {
       title: 'Calculadora',
       summary: 'Calculadora web responsiva com interface adaptável e tratamento de erros.',
       period: 'Fev 2026',
-      image: '/projects/calculadora.png',
+      image: '/projects/calculadora.png?v=de53742'
       imageAlt: 'Calculadora clara com teclas arredondadas e visor digital',
       details: [
         'Calculadora web responsiva desenvolvida com HTML, CSS e JavaScript, com interface adaptável para desktop, tablet e celular.',
