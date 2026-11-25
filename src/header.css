@@ -64,6 +64,11 @@
 .desktop-nav > a:hover::after, .desktop-nav > a[aria-current]::after { transform: scaleX(1); }
 .desktop-nav > a:hover, .nav-more:hover > button, .nav-more:focus-within > button { color: #2b0093; }
 .nav-more > button { border: 0; background: transparent; }
+.nav-more > button { display: inline-flex; align-items: center; gap: 4px; }
+/* Seta vira para cima quando o menu "More" está aberto */
+.nav-more__caret { transition: transform .25s ease; }
+.nav-more--open .nav-more__caret { transform: rotate(180deg); }
+@media (prefers-reduced-motion: reduce) { .nav-more__caret { transition: none; } }
 .nav-more__panel {
   top: calc(100% + 15px);
   left: -20px;

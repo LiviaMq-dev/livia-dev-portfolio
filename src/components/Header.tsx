@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowUpRight, Menu, X } from 'lucide-react'
+import { ArrowUpRight, ChevronDown, Menu, X } from 'lucide-react'
 import { Brand } from './Brand'
 import { ThemeToggle } from './ThemeToggle'
 import { LangToggle } from './LangToggle'
@@ -76,7 +76,7 @@ export function Header() {
       <Brand compact />
       <nav className="desktop-nav" aria-label={t('nav.main')}>
         {primary.map(item => <a key={item.href} href={item.href} aria-current={active === item.href ? 'location' : undefined}>{l(item.label)}</a>)}
-        <div ref={moreRef} className={`nav-more ${moreOpen ? 'nav-more--open' : ''}`}><button type="button" aria-expanded={moreOpen} aria-controls="nav-more-panel" onClick={() => setMoreOpen(!moreOpen)}>{t('nav.more')} <span aria-hidden="true">⌄</span></button><div id="nav-more-panel" className="nav-more__panel">{secondary.map(item => <a key={item.href} href={item.href} onClick={() => setMoreOpen(false)}>{l(item.label)}</a>)}</div></div>
+        <div ref={moreRef} className={`nav-more ${moreOpen ? 'nav-more--open' : ''}`}><button type="button" aria-expanded={moreOpen} aria-controls="nav-more-panel" onClick={() => setMoreOpen(!moreOpen)}>{t('nav.more')} <ChevronDown className="nav-more__caret" size={14} strokeWidth={2.4} aria-hidden="true" /></button><div id="nav-more-panel" className="nav-more__panel">{secondary.map(item => <a key={item.href} href={item.href} onClick={() => setMoreOpen(false)}>{l(item.label)}</a>)}</div></div>
       </nav>
       <a className="header-contact" href="#contato">{t('nav.cta')} <ArrowUpRight size={15} aria-hidden="true" /></a>
       <LangToggle />
