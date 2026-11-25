@@ -74,6 +74,7 @@
   background: #b8a6e3;
   box-shadow: 0 12px 25px rgba(0,0,0,.22);
 }
+.nav-more:not(.nav-more--open) .nav-more__panel { display: none; }
 .nav-more--open .nav-more__panel { display: grid; }
 .nav-more__panel a {
   padding: 11px;

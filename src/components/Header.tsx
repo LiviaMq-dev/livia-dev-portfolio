@@ -13,6 +13,7 @@ export function Header() {
   const [moreOpen, setMoreOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
+  const moreRef = useRef<HTMLDivElement>(null)
   const primary = [0, 1, 5, 2, 4, 8].map(index => portfolio.navigation[index])
   const secondary = [3, 6, 7].map(index => portfolio.navigation[index])
 
@@ -34,6 +35,14 @@ export function Header() {
     document.addEventListener('keydown', close)
     return () => document.removeEventListener('keydown', close)
   }, [open, moreOpen])
+  useEffect(() => {
+    if (!moreOpen) return
+    const closeOutside = (event: PointerEvent) => {
+      if (!moreRef.current?.contains(event.target as Node)) setMoreOpen(false)
+    }
+    document.addEventListener('pointerdown', closeOutside)
+    return () => document.removeEventListener('pointerdown', closeOutside)
+  }, [moreOpen])
 
   useEffect(() => {
     if (open || moreOpen) setHidden(false)
@@ -67,7 +76,7 @@ export function Header() {
       <Brand compact />
       <nav className="desktop-nav" aria-label={t('nav.main')}>
         {primary.map(item => <a key={item.href} href={item.href} aria-current={active === item.href ? 'location' : undefined}>{l(item.label)}</a>)}
-        <div className={`nav-more ${moreOpen ? 'nav-more--open' : ''}`}><button type="button" aria-expanded={moreOpen} aria-controls="nav-more-panel" onClick={() => setMoreOpen(!moreOpen)}>{t('nav.more')} <span aria-hidden="true">⌄</span></button><div id="nav-more-panel" className="nav-more__panel">{secondary.map(item => <a key={item.href} href={item.href} onClick={() => setMoreOpen(false)}>{l(item.label)}</a>)}</div></div>
+        <div ref={moreRef} className={`nav-more ${moreOpen ? 'nav-more--open' : ''}`}><button type="button" aria-expanded={moreOpen} aria-controls="nav-more-panel" onClick={() => setMoreOpen(!moreOpen)}>{t('nav.more')} <span aria-hidden="true">⌄</span></button><div id="nav-more-panel" className="nav-more__panel">{secondary.map(item => <a key={item.href} href={item.href} onClick={() => setMoreOpen(false)}>{l(item.label)}</a>)}</div></div>
       </nav>
       <a className="header-contact" href="#contato">{t('nav.cta')} <ArrowUpRight size={15} aria-hidden="true" /></a>
       <LangToggle />
