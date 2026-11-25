@@ -26,7 +26,7 @@
 }
 .lang-toggle span.is-active { background: #5216e4; color: #fff; }
 .lang-toggle:hover { border-color: #3600b8; }
-@media (max-width: 1040px) {
+@media (max-width: 1250px) {
   .lang-toggle { margin-left: auto; }
   .lang-toggle + .theme-toggle { margin-left: 0; }
 }
