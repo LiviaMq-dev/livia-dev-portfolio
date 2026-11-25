@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { portfolio } from '../data/portfolio'
+import { useI18n } from '../i18n/I18nProvider'
 
 export function ExperienceTimeline() {
+  const { l } = useI18n()
   const listRef = useRef<HTMLOListElement>(null)
 
   useEffect(() => {
@@ -53,15 +55,15 @@ export function ExperienceTimeline() {
   }, [])
 
   return <ol className="experience-list" ref={listRef}>
-    {portfolio.experience.map(item => <li className="experience-item" key={`${item.company}-${item.period}`}>
+    {portfolio.experience.map(item => <li className="experience-item" key={item.company}>
       <span className="experience-item__marker" aria-hidden="true" />
       <div className="experience-item__content">
         <div className="experience-item__topline">
-          <h3>{item.role}</h3>
-          <span className="experience-item__period">{item.period}</span>
+          <h3>{l(item.role)}</h3>
+          <span className="experience-item__period">{l(item.period)}</span>
         </div>
-        <p className="experience-item__company">{item.company}</p>
-        <p className="experience-item__description">{item.description}</p>
+        <p className="experience-item__company">{item.company}{item.kind && ` · ${l(item.kind)}`}</p>
+        <p className="experience-item__description">{l(item.description)}</p>
       </div>
     </li>)}
   </ol>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Moon, Sun } from 'lucide-react'
+import { useI18n } from '../i18n/I18nProvider'
 
 type Theme = 'dark' | 'light'
 const THEME_COLORS: Record<Theme, string> = { dark: '#000000', light: '#ffffff' }
@@ -10,6 +11,7 @@ function currentTheme(): Theme {
 }
 
 export function ThemeToggle() {
+  const { t } = useI18n()
   const [theme, setTheme] = useState<Theme>(currentTheme)
   const next: Theme = theme === 'dark' ? 'light' : 'dark'
 
@@ -25,7 +27,7 @@ export function ThemeToggle() {
     setTheme(next)
   }
 
-  return <button className="theme-toggle" type="button" onClick={toggle} aria-label={next === 'light' ? 'Switch to light theme' : 'Switch to dark theme'} title={next === 'light' ? 'Light theme' : 'Dark theme'}>
+  return <button className="theme-toggle" type="button" onClick={toggle} aria-label={next === 'light' ? t('theme.toLight') : t('theme.toDark')} title={next === 'light' ? t('theme.toLight') : t('theme.toDark')}>
     {theme === 'dark' ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
   </button>
 }

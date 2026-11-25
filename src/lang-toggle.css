@@ -1,0 +1,33 @@
+/* Botão de idioma EN/PT no header */
+.lang-toggle {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 2px;
+  height: 40px;
+  padding: 0 4px;
+  border: 1px solid rgba(18, 12, 34, .28);
+  border-radius: 10px;
+  background: transparent;
+  color: #2e2347;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  transition: border-color .2s ease, background-color .2s ease;
+}
+.lang-toggle span {
+  display: grid;
+  place-items: center;
+  min-width: 26px;
+  height: 30px;
+  padding: 0 4px;
+  border-radius: 7px;
+  transition: background-color .25s ease, color .25s ease;
+}
+.lang-toggle span.is-active { background: #5216e4; color: #fff; }
+.lang-toggle:hover { border-color: #3600b8; }
+@media (max-width: 1040px) {
+  .lang-toggle { margin-left: auto; }
+  .lang-toggle + .theme-toggle { margin-left: 0; }
+}
+:root[data-theme='light'] .lang-toggle { border-color: #cfc6e6; }

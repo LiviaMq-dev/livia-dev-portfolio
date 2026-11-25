@@ -3,8 +3,8 @@
    sem criar rolagem horizontal. */
 :root {
   --bg-base: #000000;
-  --bg-alt: #0f0a18;
-  --line-alt: #1f1628;
+  --bg-alt: #05040e;
+  --line-alt: #1b1628;
 }
 
 #inicio, .marquee, #sobre, #habilidades, #experiencia, #projetos,
@@ -16,6 +16,8 @@
 
 #inicio, #sobre, #experiencia, #certificacoes, #servicos, .footer { --section-bg: var(--bg-base); }
 .marquee, #habilidades, #projetos, #formacao, #contato { --section-bg: var(--bg-alt); }
+/* Contato um pouco mais escuro que as outras seções roxas (só no tema escuro). */
+:root:not([data-theme='light']) #contato { --section-bg: #020107; }
 
 /* Faixa de tecnologias: a troca de cor já separa a faixa; a borda fica sutil. */
 .marquee { border-color: var(--line-alt); }
@@ -24,9 +26,9 @@
 #contato .contact-form,
 #contato .chat-preview,
 #contato .contact-direct {
-  background-color: #150e20;
-  border-color: #2a1f36;
+  background-color: #0d0a19;
+  border-color: #2a2045;
 }
-#projetos .project-card { background-color: #150e20; }
+#projetos .project-card { background-color: #000; }
 #contato .contact-field input[type='text'],
-#contato .contact-field textarea { background-color: #0a0610; }
+#contato .contact-field textarea { background-color: #07050f; }

@@ -15,8 +15,8 @@
   left: 7px;
   width: 2px;
   height: var(--timeline-length, 0px);
-  background: linear-gradient(180deg, #a700f1, #d184ff);
-  box-shadow: 0 0 12px rgba(167, 0, 241, .55);
+  background: linear-gradient(180deg, #5216e4, #a884ff);
+  box-shadow: 0 0 12px rgba(82, 22, 228, .55);
   transform: scaleY(var(--timeline-progress, 0));
   transform-origin: top;
   pointer-events: none;
@@ -29,7 +29,7 @@
   bottom: -8px;
   left: 7px;
   width: 1px;
-  background: linear-gradient(#a700f1, #423049);
+  background: linear-gradient(#5216e4, #373049);
 }
 
 .experience-item {
@@ -48,9 +48,9 @@
   width: 16px;
   height: 16px;
   margin-top: 8px;
-  border: 2px solid #a700f1;
+  border: 2px solid #5216e4;
   border-radius: 50%;
-  background: #a700f1;
+  background: #5216e4;
   box-shadow: 0 0 0 5px #000;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .experience-list--motion .experience-item.is-revealed .experience-item__marker {
-  box-shadow: 0 0 0 5px #000, 0 0 0 9px rgba(167, 0, 241, .18), 0 0 24px rgba(167, 0, 241, .65);
+  box-shadow: 0 0 0 5px #000, 0 0 0 9px rgba(82, 22, 228, .18), 0 0 24px rgba(82, 22, 228, .65);
 }
 
 .experience-list--motion .experience-item__content {
@@ -100,14 +100,14 @@
 
 .experience-item__period {
   flex: none;
-  color: #b8a7c1;
+  color: #afa7c1;
   font-family: 'Space Mono', monospace;
   font-size: 12px;
 }
 
 .experience-item__company {
   margin: 10px 0 23px;
-  color: #bc74df;
+  color: #9374df;
   font-size: 15px;
   font-weight: 600;
 }

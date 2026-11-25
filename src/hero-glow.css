@@ -17,8 +17,8 @@
 .hero-glow span:nth-child(2) { --size: clamp(280px, 36vw, 540px); --duration: 28s; top: 10%; right: -10%; animation-delay: -9s; }
 .hero-glow span:nth-child(3) { --size: clamp(240px, 30vw, 440px); --duration: 25s; bottom: -30%; left: 34%; animation-delay: -15s; }
 
-:root { --glow-color: rgba(167, 0, 241, .22); }
-:root[data-theme='light'] { --glow-color: rgba(167, 0, 241, .2); }
+:root { --glow-color: rgba(82, 22, 228, .22); }
+:root[data-theme='light'] { --glow-color: rgba(82, 22, 228, .2); }
 
 @keyframes hero-glow-drift {
   0% { transform: translate(0, 0) scale(1); }

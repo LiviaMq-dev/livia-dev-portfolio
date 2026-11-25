@@ -8,7 +8,7 @@
   position: absolute;
   left: calc(var(--x) * 100%);
   padding-left: 8px;
-  border-left: 1px solid #2f2440;
+  border-left: 1px solid #2c2440;
   color: #8a8a8f;
   font-family: 'Space Mono', monospace;
   font-size: 11px;
@@ -17,7 +17,7 @@
 .education-axis__tracks {
   position: relative;
   height: 36px;
-  border-bottom: 1px solid #2a1f36;
+  border-bottom: 1px solid #261f36;
 }
 .education-axis__bar {
   position: absolute;
@@ -29,9 +29,9 @@
   display: flex;
   align-items: center;
   padding: 0 12px;
-  border: 1px solid #5b2c80;
+  border: 1px solid #452c80;
   border-radius: 999px;
-  background: rgba(167, 0, 241, .2);
+  background: rgba(82, 22, 228, .2);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform .9s cubic-bezier(.2, .7, .2, 1);
@@ -39,7 +39,7 @@
 }
 .education-axis__bar span {
   overflow: hidden;
-  color: #ecdcf7;
+  color: #e4dcf7;
   font-size: 11px;
   font-weight: 500;
   white-space: nowrap;
@@ -49,8 +49,8 @@
   transition-delay: calc(var(--i) * .35s + .6s);
 }
 .education-axis__bar--current {
-  border-color: #a700f1;
-  background: linear-gradient(90deg, #a700f1, #c25cf4);
+  border-color: #5216e4;
+  background: linear-gradient(90deg, #5216e4, #885cf4);
 }
 .education-axis__bar--current span { color: #fff; }
 /* Brilho que percorre a barra do curso em andamento */
@@ -77,16 +77,16 @@
   position: relative;
   overflow: hidden;
   padding: 22px 20px;
-  border: 1px solid #4a2a66;
+  border: 1px solid #3c2a66;
   border-radius: 20px;
-  background: #150e20;
+  background: #0d0a19;
   opacity: 0;
   transform: translateY(18px);
   transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1), border-color .3s ease;
   transition-delay: calc(.2s + var(--i) * .15s), calc(.2s + var(--i) * .15s), 0s;
 }
 .education-journey--visible .education-card { opacity: 1; transform: none; }
-.education-card:hover { border-color: #5b2c80; }
+.education-card:hover { border-color: #452c80; }
 .education-card::before {
   content: '';
   position: absolute;
@@ -94,7 +94,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, #a700f1, #cf73f7 55%, rgba(207, 115, 247, 0));
+  background: linear-gradient(90deg, #5216e4, #9a73f7 55%, rgba(154, 115, 247, 0));
 }
 .education-card__top {
   position: relative;
@@ -108,15 +108,15 @@
   place-items: center;
   width: 40px;
   height: 40px;
-  border: 1px solid #4a2a66;
+  border: 1px solid #3c2a66;
   border-radius: 12px;
-  background: rgba(167, 0, 241, .14);
-  color: #ead2fb;
+  background: rgba(82, 22, 228, .14);
+  color: #ded2fb;
   transition: box-shadow .3s ease;
 }
-.education-card:hover .education-card__icon { box-shadow: 0 0 0 4px rgba(167, 0, 241, .12); }
+.education-card:hover .education-card__icon { box-shadow: 0 0 0 4px rgba(82, 22, 228, .12); }
 .education-card__qualification {
-  color: #cf73f7;
+  color: #9a73f7;
   font-size: 13px;
   font-weight: 600;
 }
@@ -126,28 +126,28 @@
   gap: 8px;
   margin-left: auto;
   padding: 5px 12px;
-  border: 1px solid #5b2c80;
+  border: 1px solid #452c80;
   border-radius: 999px;
-  background: rgba(167, 0, 241, .14);
-  color: #f1e3fb;
+  background: rgba(82, 22, 228, .14);
+  color: #eae3fb;
   font-size: 12px;
   font-weight: 600;
 }
-.education-card__status--done { border-color: #33263f; background: transparent; color: #c9b8d6; }
-.education-card__status--done svg { color: #cf73f7; }
+.education-card__status--done { border-color: #2d263f; background: transparent; color: #c1b8d6; }
+.education-card__status--done svg { color: #9a73f7; }
 .education-card__pulse {
   position: relative;
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #cf73f7;
+  background: #9a73f7;
 }
 .education-card__pulse::after {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: #cf73f7;
+  background: #9a73f7;
   animation: education-pulse 2s ease-out infinite;
 }
 
@@ -178,7 +178,7 @@
   font-size: 13px;
   line-height: 1.5;
 }
-.education-card__facts svg { flex: none; margin-top: 2px; color: #8f6aa8; }
+.education-card__facts svg { flex: none; margin-top: 2px; color: #7c6aa8; }
 .education-card__period { font-family: 'Space Mono', monospace; font-size: 12px; line-height: 21px; }
 
 @keyframes education-sheen {

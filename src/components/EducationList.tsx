@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { BookOpen, CalendarDays, CircleCheck, Gamepad2, GraduationCap, School, type LucideIcon } from 'lucide-react'
 import { portfolio } from '../data/portfolio'
+import { useI18n, type Text } from '../i18n/I18nProvider'
 
 function years(period: string) {
   const [start, end = start] = (period.match(/\d{4}/g) ?? []).map(Number)
@@ -8,13 +9,18 @@ function years(period: string) {
 }
 
 // Ícone escolhido pelo tipo de formação; cursos sem correspondência usam um livro.
-function iconFor(qualification: string, program: string): LucideIcon {
+// O ícone é escolhido pela versão em português, para não depender do idioma exibido.
+const ptText = (text: Text) => (typeof text === 'string' ? text : text.pt)
+function iconFor(qualificationText: Text, programText: Text): LucideIcon {
+  const qualification = ptText(qualificationText)
+  const program = ptText(programText)
   if (/jogos|games/i.test(program)) return Gamepad2
   if (/tecn[oó]logo|gradua|bacharel|licenciatura/i.test(qualification)) return GraduationCap
   return BookOpen
 }
 
 export function EducationList() {
+  const { l } = useI18n()
   const rootRef = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
 
@@ -29,7 +35,7 @@ export function EducationList() {
     return () => observer.disconnect()
   }, [])
 
-  const items = portfolio.education.map(item => ({ ...item, ...years(item.period), done: /conclu/i.test(item.status) }))
+  const items = portfolio.education.map(item => ({ ...item, ...years(item.period) }))
   const first = Math.min(...items.map(item => item.start))
   const last = Math.max(...items.map(item => item.end))
   const span = last - first + 1
@@ -42,8 +48,8 @@ export function EducationList() {
         {ticks.map(year => <span key={year} style={{ '--x': (year - first) / span } as CSSProperties}>{year}</span>)}
       </div>
       <div className="education-axis__tracks">
-        {chronological.map((item, index) => <div key={item.program} className={`education-axis__bar ${item.done ? '' : 'education-axis__bar--current'}`} style={{ '--x': (item.start - first) / span, '--w': (item.end - item.start + 1) / span, '--i': index } as CSSProperties}>
-          <span>{item.program}</span>
+        {chronological.map((item, index) => <div key={item.institution} className={`education-axis__bar ${item.done ? '' : 'education-axis__bar--current'}`} style={{ '--x': (item.start - first) / span, '--w': (item.end - item.start + 1) / span, '--i': index } as CSSProperties}>
+          <span>{l(item.program)}</span>
         </div>)}
       </div>
     </div>
@@ -51,16 +57,16 @@ export function EducationList() {
     <ol className="education-cards">
       {items.map((item, index) => {
         const Icon = iconFor(item.qualification, item.program)
-        return <li key={item.program} className={`education-card ${item.done ? '' : 'education-card--current'}`} style={{ '--i': index } as CSSProperties}>
+        return <li key={item.institution} className={`education-card ${item.done ? '' : 'education-card--current'}`} style={{ '--i': index } as CSSProperties}>
           <div className="education-card__top">
             <span className="education-card__icon"><Icon size={20} strokeWidth={1.6} aria-hidden="true" /></span>
-            <span className="education-card__qualification">{item.qualification}</span>
+            <span className="education-card__qualification">{l(item.qualification)}</span>
             <span className={`education-card__status ${item.done ? 'education-card__status--done' : ''}`}>
               {item.done ? <CircleCheck size={14} aria-hidden="true" /> : <span className="education-card__pulse" aria-hidden="true" />}
-              {item.status}
+              {l(item.status)}
             </span>
           </div>
-          <h3>{item.program}</h3>
+          <h3>{l(item.program)}</h3>
           <ul className="education-card__facts">
             <li><School size={16} aria-hidden="true" />{item.institution}</li>
             <li><CalendarDays size={16} aria-hidden="true" /><span className="education-card__period">{item.period}</span></li>

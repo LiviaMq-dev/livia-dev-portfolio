@@ -1,19 +1,29 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en" translate="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
+    <meta name="google" content="notranslate" />
     <script>
-      // Aplica o tema salvo antes da renderização para evitar piscar o tema errado.
+      // Aplica o tema e o idioma salvos antes da renderização para evitar piscar a versão errada.
       (function () {
         var theme = 'dark'
         try { if (localStorage.getItem('theme') === 'light') theme = 'light' } catch (e) {}
         document.documentElement.dataset.theme = theme
         if (theme === 'light') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        // Idioma: escolha salva ou, na primeira visita, o idioma do navegador.
+        var lang = 'en'
+        try {
+          var saved = localStorage.getItem('lang')
+          if (saved === 'pt' || saved === 'en') lang = saved
+          else if (/^pt/i.test(navigator.language || '')) lang = 'pt'
+        } catch (e) {}
+        document.documentElement.dataset.lang = lang
+        document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en'
       })()
     </script>
-    <meta name="description" content="Livia.Dev — portfólio em construção sobre desenvolvimento, inteligência artificial e automações." />
+    <meta name="description" content="Livia.Dev — Full Stack developer portfolio: web development, artificial intelligence and automation." />
     <meta property="og:title" content="Livia.Dev — Portfólio" />
     <meta property="og:description" content="Tecnologia com intenção. Conheça a estrutura inicial do portfólio Livia.Dev." />
     <meta property="og:type" content="website" />

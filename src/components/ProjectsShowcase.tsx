@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { portfolio } from '../data/portfolio'
+import { useI18n } from '../i18n/I18nProvider'
 
 export function ProjectsShowcase() {
+  const { t, l } = useI18n()
   const projects = portfolio.projects
   const listRef = useRef<HTMLDivElement>(null)
   const thumbnailsRef = useRef<HTMLDivElement>(null)
@@ -81,7 +83,7 @@ export function ProjectsShowcase() {
 
   const projectInDialog = activeProject === null ? null : projects[activeProject]
   const projectImages = projectInDialog
-    ? [{ src: projectInDialog.image, alt: projectInDialog.imageAlt }, ...(projectInDialog.gallery ?? [])]
+    ? [{ src: projectInDialog.image, alt: l(projectInDialog.imageAlt) }, ...(projectInDialog.gallery ?? []).map(image => ({ src: image.src, alt: l(image.alt) }))]
     : []
 
   const openProject = (index: number) => {
@@ -93,7 +95,7 @@ export function ProjectsShowcase() {
     <div className="project-showcase__track" ref={listRef} onScroll={() => { updateSelectedOnScroll(); updateScrollLimits() }}>
       {projects.map((project, index) => <article
         className={`project-card${highlighted === index ? ' project-card--selected' : ''}`}
-        key={project.title}
+        key={project.image}
         onMouseEnter={() => setHovered(index)}
         onMouseLeave={() => setHovered(null)}
         onFocusCapture={() => setHovered(index)}
@@ -103,46 +105,46 @@ export function ProjectsShowcase() {
         onClick={() => setSelected(index)}
       >
         <div className="project-card__preview">
-          <img src={project.image} alt={project.imageAlt} loading="lazy" />
+          <img src={project.image} alt={l(project.imageAlt)} loading="lazy" />
         </div>
         <div className="project-card__info">
-          <span className="project-card__period">{project.period}</span>
-          <h3>{project.title}</h3>
-          <p>{project.summary}</p>
-          <button type="button" onClick={() => openProject(index)}>Ver detalhes <ArrowUpRight size={15} aria-hidden="true" /></button>
+          <span className="project-card__period">{l(project.period)}</span>
+          <h3>{l(project.title)}</h3>
+          <p>{l(project.summary)}</p>
+          <button type="button" onClick={() => openProject(index)}>{t('projects.details')} <ArrowUpRight size={15} aria-hidden="true" /></button>
         </div>
       </article>)}
     </div>
     <div className="project-showcase__controls">
-      <button className="project-showcase__arrow" type="button" aria-label="Projeto anterior" disabled={!scrollLimits.prev} onClick={() => moveCarousel(-1)}><ChevronLeft size={20} aria-hidden="true" /></button>
-      <div className="project-showcase__dots" aria-label="Selecionar projeto">
-        {projects.map((project, index) => <button key={project.title} type="button" className={highlighted === index ? 'is-active' : ''} aria-label={`Selecionar ${project.title}`} aria-pressed={highlighted === index} onClick={() => selectProject(index)} />)}
+      <button className="project-showcase__arrow" type="button" aria-label={t('projects.prev')} disabled={!scrollLimits.prev} onClick={() => moveCarousel(-1)}><ChevronLeft size={20} aria-hidden="true" /></button>
+      <div className="project-showcase__dots" aria-label={t('projects.select')}>
+        {projects.map((project, index) => <button key={project.image} type="button" className={highlighted === index ? 'is-active' : ''} aria-label={t('projects.selectOne', { name: l(project.title) })} aria-pressed={highlighted === index} onClick={() => selectProject(index)} />)}
       </div>
-      <button className="project-showcase__arrow" type="button" aria-label="Próximo projeto" disabled={!scrollLimits.next} onClick={() => moveCarousel(1)}><ChevronRight size={20} aria-hidden="true" /></button>
+      <button className="project-showcase__arrow" type="button" aria-label={t('projects.next')} disabled={!scrollLimits.next} onClick={() => moveCarousel(1)}><ChevronRight size={20} aria-hidden="true" /></button>
     </div>
 
     <dialog className="project-dialog" ref={dialogRef} aria-labelledby="project-dialog-title" onClose={() => setActiveProject(null)}>
       {projectInDialog && <>
-        <button className="project-dialog__close" type="button" aria-label="Fechar detalhes do projeto" onClick={() => dialogRef.current?.close()}><X size={22} /></button>
+        <button className="project-dialog__close" type="button" aria-label={t('projects.close')} onClick={() => dialogRef.current?.close()}><X size={22} /></button>
         <div className="project-dialog__gallery">
           <img className="project-dialog__image" src={projectImages[activeImage].src} alt={projectImages[activeImage].alt} draggable={false} />
           {projectImages.length > 1 && <>
-            <button className="project-dialog__gallery-arrow project-dialog__gallery-arrow--prev" type="button" aria-label="Imagem anterior" onClick={() => setActiveImage(index => (index - 1 + projectImages.length) % projectImages.length)}><ChevronLeft size={20} aria-hidden="true" /></button>
-            <button className="project-dialog__gallery-arrow project-dialog__gallery-arrow--next" type="button" aria-label="Próxima imagem" onClick={() => setActiveImage(index => (index + 1) % projectImages.length)}><ChevronRight size={20} aria-hidden="true" /></button>
+            <button className="project-dialog__gallery-arrow project-dialog__gallery-arrow--prev" type="button" aria-label={t('projects.prevImage')} onClick={() => setActiveImage(index => (index - 1 + projectImages.length) % projectImages.length)}><ChevronLeft size={20} aria-hidden="true" /></button>
+            <button className="project-dialog__gallery-arrow project-dialog__gallery-arrow--next" type="button" aria-label={t('projects.nextImage')} onClick={() => setActiveImage(index => (index + 1) % projectImages.length)}><ChevronRight size={20} aria-hidden="true" /></button>
             <span className="project-dialog__gallery-count">{activeImage + 1} / {projectImages.length}</span>
           </>}
         </div>
-        {projectImages.length > 1 && <div className="project-dialog__thumbnails" ref={thumbnailsRef} aria-label="Imagens do projeto">
-          {projectImages.map((image, index) => <button key={image.src} className={activeImage === index ? 'is-active' : ''} type="button" aria-label={`Ver imagem ${index + 1} de ${projectImages.length}`} aria-pressed={activeImage === index} onClick={() => setActiveImage(index)}><img src={image.src} alt="" loading="lazy" draggable={false} /></button>)}
+        {projectImages.length > 1 && <div className="project-dialog__thumbnails" ref={thumbnailsRef} aria-label={t('projects.images')}>
+          {projectImages.map((image, index) => <button key={image.src} className={activeImage === index ? 'is-active' : ''} type="button" aria-label={t('projects.imageOf', { index: index + 1, total: projectImages.length })} aria-pressed={activeImage === index} onClick={() => setActiveImage(index)}><img src={image.src} alt="" loading="lazy" draggable={false} /></button>)}
         </div>}
         <div className="project-dialog__body">
-          <span className="project-dialog__period">{projectInDialog.period}</span>
-          <h2 id="project-dialog-title">{projectInDialog.title}</h2>
-          {projectInDialog.details.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
-          <ul className="project-dialog__technologies" aria-label="Tecnologias e práticas">
-            {projectInDialog.technologies.map(technology => <li key={technology}>{technology}</li>)}
+          <span className="project-dialog__period">{l(projectInDialog.period)}</span>
+          <h2 id="project-dialog-title">{l(projectInDialog.title)}</h2>
+          {projectInDialog.details.map(paragraph => <p key={l(paragraph)}>{l(paragraph)}</p>)}
+          <ul className="project-dialog__technologies" aria-label={t('projects.tech')}>
+            {projectInDialog.technologies.map(technology => <li key={l(technology)}>{l(technology)}</li>)}
           </ul>
-          {projectInDialog.href && <a className="project-dialog__link" href={projectInDialog.href} target="_blank" rel="noopener noreferrer">Abrir projeto <ArrowUpRight size={16} aria-hidden="true" /></a>}
+          {projectInDialog.href && <a className="project-dialog__link" href={projectInDialog.href} target="_blank" rel="noopener noreferrer">{t('projects.open')} <ArrowUpRight size={16} aria-hidden="true" /></a>}
         </div>
       </>}
     </dialog>

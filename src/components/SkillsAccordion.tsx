@@ -8,6 +8,7 @@ import {
   SiNotion, SiPython, SiUnity, SiWordpress,
 } from 'react-icons/si'
 import { portfolio } from '../data/portfolio'
+import { useI18n } from '../i18n/I18nProvider'
 
 const canvaIcon = new URL('../assets/canva.ico', import.meta.url).href
 
@@ -60,6 +61,7 @@ const toolColors: Record<string, string> = {
 }
 
 export function SkillsAccordion() {
+  const { l } = useI18n()
   const [expanded, setExpanded] = useState<string[]>([])
   const accordionRef = useRef<HTMLDivElement>(null)
   const manuallyToggled = useRef(new Set<string>())
@@ -103,7 +105,7 @@ export function SkillsAccordion() {
         <button className="skill-category__trigger" type="button" aria-expanded={isExpanded} aria-controls={panelId} onClick={() => toggle(area.id)}>
           <span className="skill-category__number">0{index + 1}</span>
           <Icon size={24} strokeWidth={1.5} aria-hidden="true" />
-          <span className="skill-category__label">{area.label}</span>
+          <span className="skill-category__label">{l(area.label)}</span>
           <ChevronDown className="skill-category__chevron" size={22} strokeWidth={1.5} aria-hidden="true" />
         </button>
         <div className="skill-category__panel" id={panelId} aria-hidden={!isExpanded}>

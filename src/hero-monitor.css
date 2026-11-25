@@ -17,13 +17,13 @@
 .hero-monitor__screen {
   position: relative;
   overflow: hidden;
-  border: 1px solid #3b2557;
+  border: 1px solid #342557;
   border-radius: 10px;
   background: #0b0712;
   box-shadow:
-    0 0 0 8px #120c1b,
-    0 0 0 9px #2a1f36,
-    0 30px 90px -20px rgba(167, 0, 241, .45);
+    0 0 0 8px #100c1b,
+    0 0 0 9px #261f36,
+    0 30px 90px -20px rgba(82, 22, 228, .45);
 }
 /* Reflexo sutil da tela */
 .hero-monitor__screen::after {
@@ -38,17 +38,17 @@
   display: flex;
   align-items: stretch;
   justify-content: space-between;
-  border-bottom: 1px solid #241834;
-  background: #110a1a;
+  border-bottom: 1px solid #201834;
+  background: #0f0a1a;
   font-family: 'Space Mono', monospace;
   font-size: clamp(9px, 2.2cqi, 12px);
 }
 .hero-monitor__tab {
   padding: .7em 1.2em;
-  border-right: 1px solid #241834;
-  border-top: 2px solid #a700f1;
+  border-right: 1px solid #201834;
+  border-top: 2px solid #5216e4;
   background: #0b0712;
-  color: #f1e3fb;
+  color: #eae3fb;
 }
 .hero-monitor__title { align-self: center; padding: 0 1.2em; color: #6e6e73; }
 
@@ -63,11 +63,11 @@
   flex: none;
   width: 3.2em;
   padding-right: 1.1em;
-  color: #4a3a5a;
+  color: #433a5a;
   text-align: right;
   user-select: none;
 }
-.hero-monitor__text { overflow: hidden; color: #e6e1ea; white-space: pre; }
+.hero-monitor__text { overflow: hidden; color: #e4e1ea; white-space: pre; }
 
 .hero-monitor__cursor {
   display: inline-block;
@@ -75,15 +75,15 @@
   height: 1.15em;
   margin-left: 1px;
   vertical-align: -.2em;
-  background: #cf73f7;
-  box-shadow: 0 0 10px rgba(207, 115, 247, .8);
+  background: #9a73f7;
+  box-shadow: 0 0 10px rgba(154, 115, 247, .8);
   animation: monitor-caret 1s steps(1) infinite;
 }
 
-.tok-keyword { color: #cf73f7; }
-.tok-string { color: #f3c4ff; }
+.tok-keyword { color: #9a73f7; }
+.tok-string { color: #d5c4ff; }
 .tok-function { color: #a8b4ff; }
-.tok-property { color: #e6e1ea; }
+.tok-property { color: #e4e1ea; }
 .tok-comment { color: #6e6878; font-style: italic; }
 .tok-punct { color: #8a7f96; }
 
@@ -91,7 +91,7 @@
   display: flex;
   justify-content: space-between;
   padding: .45em 1.2em;
-  background: #a700f1;
+  background: #5216e4;
   color: #fff;
   font-family: 'Space Mono', monospace;
   font-size: clamp(8px, 2cqi, 11px);
@@ -107,15 +107,15 @@
   content: '';
   width: 16%;
   height: 34px;
-  background: linear-gradient(180deg, #1c1328, #120c1b);
+  background: linear-gradient(180deg, #191328, #100c1b);
   clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
 }
 .hero-monitor__stand span {
   width: 38%;
   height: 8px;
   border-radius: 3px;
-  background: #1c1328;
-  box-shadow: 0 10px 30px -6px rgba(167, 0, 241, .35);
+  background: #191328;
+  box-shadow: 0 10px 30px -6px rgba(82, 22, 228, .35);
 }
 
 @keyframes monitor-caret { 50% { opacity: 0; } }

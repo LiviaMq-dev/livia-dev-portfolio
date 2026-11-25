@@ -17,7 +17,7 @@
   left: 50%;
   width: 56px;
   height: 2px;
-  background: #a700f1;
+  background: #5216e4;
   transform: translateX(-50%);
 }
 
@@ -43,18 +43,18 @@
   min-width: 0;
   overflow: hidden;
   scroll-snap-align: center;
-  border: 1px solid #41334e;
+  border: 1px solid #3b334e;
   border-radius: 10px;
   background: #100e19;
   transition: border-color .25s ease, box-shadow .3s ease, transform .3s ease;
 }
 
 .project-card:hover,
-.project-card--selected { border-color: #8e42b1; }
+.project-card--selected { border-color: #6242b1; }
 .project-card:hover {
   z-index: 1;
   transform: scale(1.025);
-  box-shadow: 0 0 0 1px rgba(198, 126, 245, .5), 0 0 32px rgba(169, 75, 232, .3), 0 18px 40px rgba(110, 39, 160, .2);
+  box-shadow: 0 0 0 1px rgba(161, 126, 245, .5), 0 0 32px rgba(121, 75, 232, .3), 0 18px 40px rgba(74, 39, 160, .2);
 }
 
 .project-card__preview {
@@ -62,7 +62,7 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-bottom: 1px solid #41334e;
+  border-bottom: 1px solid #3b334e;
 }
 
 .project-card__preview img {
@@ -82,7 +82,7 @@
   padding: 19px 20px 20px;
 }
 
-.project-card__period { color: #a990b7; font-family: 'Space Mono', monospace; font-size: 11px; }
+.project-card__period { color: #9b90b7; font-family: 'Space Mono', monospace; font-size: 11px; }
 
 .project-card__info h3 {
   margin: 0;
@@ -102,7 +102,7 @@
   padding: 8px 0 0;
   border: 0;
   background: none;
-  color: #be80e0;
+  color: #9c80e0;
   font-size: 12px;
 }
 .project-card__info button:hover { color: #fff; }
@@ -113,13 +113,13 @@
 }
 
 .project-showcase__controls { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 10px; }
-.project-showcase__arrow { display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border: 1px solid #684279; border-radius: 50%; background: #171020; color: #c881eb; transition: border-color .2s ease, background-color .2s ease, color .2s ease; }
-.project-showcase__arrow:hover:not(:disabled) { border-color: #b770e1; background: #30173e; color: #fff; }
+.project-showcase__arrow { display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border: 1px solid #524279; border-radius: 50%; background: #151020; color: #a081eb; transition: border-color .2s ease, background-color .2s ease, color .2s ease; }
+.project-showcase__arrow:hover:not(:disabled) { border-color: #9170e1; background: #22173e; color: #fff; }
 .project-showcase__arrow:disabled { opacity: .35; cursor: default; }
 .project-showcase__dots { display: flex; justify-content: center; gap: 5px; }
 .project-showcase__dots button { display: grid; place-items: center; width: 30px; height: 30px; padding: 0; border: 0; background: none; }
-.project-showcase__dots button::after { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #544765; transition: background-color .2s ease, transform .2s ease; }
-.project-showcase__dots button.is-active::after { background: #ac5be1; transform: scale(1.25); }
+.project-showcase__dots button::after { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #504765; transition: background-color .2s ease, transform .2s ease; }
+.project-showcase__dots button.is-active::after { background: #825be1; transform: scale(1.25); }
 
 .project-dialog {
   position: fixed;
@@ -129,9 +129,9 @@
   overflow: auto;
   scrollbar-width: none;
   overscroll-behavior: contain;
-  border: 1px solid #6b3b83;
+  border: 1px solid #503b83;
   border-radius: 16px;
-  background: #130d1b;
+  background: #110d1b;
   color: #fff;
   box-shadow: 0 28px 90px rgba(0, 0, 0, .6);
 }
@@ -140,27 +140,27 @@
 .project-dialog__thumbnails::-webkit-scrollbar { display: none; }
 
 .project-dialog::backdrop { background: rgba(0, 0, 0, .78); backdrop-filter: blur(6px); }
-.project-dialog__close { position: absolute; z-index: 1; top: 14px; right: 14px; display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid rgba(255, 255, 255, .4); border-radius: 50%; background: rgba(19, 13, 27, .85); color: #fff; }
-.project-dialog__close:hover { background: #a700f1; }
+.project-dialog__close { position: absolute; z-index: 1; top: 14px; right: 14px; display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid rgba(255, 255, 255, .4); border-radius: 50%; background: rgba(17, 13, 27, .85); color: #fff; }
+.project-dialog__close:hover { background: #5216e4; }
 .project-dialog__gallery { position: relative; background: #09070d; user-select: none; -webkit-user-select: none; }
-.project-dialog__image { display: block; width: 100%; max-height: 360px; aspect-ratio: 16 / 9; object-fit: contain; border-bottom: 1px solid #493052; -webkit-user-drag: none; }
-.project-dialog__gallery-arrow { position: absolute; top: 50%; display: grid; place-items: center; width: 38px; height: 38px; padding: 0; border: 1px solid #8553a0; border-radius: 50%; background: rgba(19, 13, 27, .85); color: #fff; transform: translateY(-50%); user-select: none; -webkit-user-select: none; touch-action: manipulation; }
-.project-dialog__gallery-arrow:hover { background: #713199; }
+.project-dialog__image { display: block; width: 100%; max-height: 360px; aspect-ratio: 16 / 9; object-fit: contain; border-bottom: 1px solid #3a3052; -webkit-user-drag: none; }
+.project-dialog__gallery-arrow { position: absolute; top: 50%; display: grid; place-items: center; width: 38px; height: 38px; padding: 0; border: 1px solid #6953a0; border-radius: 50%; background: rgba(17, 13, 27, .85); color: #fff; transform: translateY(-50%); user-select: none; -webkit-user-select: none; touch-action: manipulation; }
+.project-dialog__gallery-arrow:hover { background: #4f3199; }
 .project-dialog__gallery-arrow--prev { left: 14px; }
 .project-dialog__gallery-arrow--next { right: 14px; }
-.project-dialog__gallery-count { position: absolute; right: 16px; bottom: 14px; padding: 4px 8px; border-radius: 4px; background: rgba(19, 13, 27, .85); color: #fff; font-family: 'Space Mono', monospace; font-size: 11px; }
-.project-dialog__thumbnails { position: relative; display: flex; gap: 10px; overflow-x: auto; padding: 14px 18px; border-bottom: 1px solid #493052; scrollbar-width: none; user-select: none; -webkit-user-select: none; }
+.project-dialog__gallery-count { position: absolute; right: 16px; bottom: 14px; padding: 4px 8px; border-radius: 4px; background: rgba(17, 13, 27, .85); color: #fff; font-family: 'Space Mono', monospace; font-size: 11px; }
+.project-dialog__thumbnails { position: relative; display: flex; gap: 10px; overflow-x: auto; padding: 14px 18px; border-bottom: 1px solid #3a3052; scrollbar-width: none; user-select: none; -webkit-user-select: none; }
 .project-dialog__thumbnails button { flex: 0 0 88px; height: 54px; overflow: hidden; padding: 0; border: 2px solid transparent; border-radius: 5px; background: #09070d; opacity: .68; }
 .project-dialog__thumbnails button:hover,
-.project-dialog__thumbnails button.is-active { border-color: #a700f1; opacity: 1; }
+.project-dialog__thumbnails button.is-active { border-color: #5216e4; opacity: 1; }
 .project-dialog__thumbnails img { display: block; width: 100%; height: 100%; object-fit: cover; -webkit-user-drag: none; }
 .project-dialog__body { padding: clamp(24px, 4vw, 40px); }
-.project-dialog__period { color: #b77ad2; font-family: 'Space Mono', monospace; font-size: 12px; }
+.project-dialog__period { color: #947ad2; font-family: 'Space Mono', monospace; font-size: 12px; }
 .project-dialog__body h2 { margin: 10px 0 22px; font-family: 'Space Grotesk', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 500; letter-spacing: -.05em; }
 .project-dialog__body p { max-width: 65ch; margin: 0 0 16px; color: #c9c0cf; font-size: 15px; line-height: 1.7; }
 .project-dialog__technologies { display: flex; flex-wrap: wrap; gap: 8px; margin: 25px 0 0; padding: 0; list-style: none; }
-.project-dialog__technologies li { padding: 7px 10px; border: 1px solid #69427a; border-radius: 6px; color: #d6b5e7; font-family: 'Space Mono', monospace; font-size: 11px; }
-.project-dialog__link { display: inline-flex; align-items: center; gap: 5px; margin-top: 25px; color: #cc8bec; font-size: 14px; }
+.project-dialog__technologies li { padding: 7px 10px; border: 1px solid #52427a; border-radius: 6px; color: #c4b5e7; font-family: 'Space Mono', monospace; font-size: 11px; }
+.project-dialog__link { display: inline-flex; align-items: center; gap: 5px; margin-top: 25px; color: #a78bec; font-size: 14px; }
 .project-dialog__link:hover { color: #fff; }
 
 @media (max-width: 900px) {

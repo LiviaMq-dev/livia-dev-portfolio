@@ -2,9 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { Brand } from './Brand'
 import { ThemeToggle } from './ThemeToggle'
+import { LangToggle } from './LangToggle'
+import { useI18n } from '../i18n/I18nProvider'
 import { portfolio } from '../data/portfolio'
 
 export function Header() {
+  const { t, l } = useI18n()
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('#inicio')
   const [moreOpen, setMoreOpen] = useState(false)
@@ -59,19 +62,20 @@ export function Header() {
     }
   }, [open, moreOpen])
 
-  return <header ref={headerRef} lang="en" className={`site-header ${hidden ? 'site-header--hidden' : ''}`} onFocusCapture={() => setHidden(false)}>
+  return <header ref={headerRef} className={`site-header ${hidden ? 'site-header--hidden' : ''}`} onFocusCapture={() => setHidden(false)}>
     <div className="header-inner shell">
       <Brand compact />
-      <nav className="desktop-nav" aria-label="Main navigation">
-        {primary.map(item => <a key={item.href} href={item.href} aria-current={active === item.href ? 'location' : undefined}>{item.label}</a>)}
-        <div className={`nav-more ${moreOpen ? 'nav-more--open' : ''}`}><button type="button" aria-expanded={moreOpen} aria-controls="nav-more-panel" onClick={() => setMoreOpen(!moreOpen)}>More <span aria-hidden="true">⌄</span></button><div id="nav-more-panel" className="nav-more__panel">{secondary.map(item => <a key={item.href} href={item.href} onClick={() => setMoreOpen(false)}>{item.label}</a>)}</div></div>
+      <nav className="desktop-nav" aria-label={t('nav.main')}>
+        {primary.map(item => <a key={item.href} href={item.href} aria-current={active === item.href ? 'location' : undefined}>{l(item.label)}</a>)}
+        <div className={`nav-more ${moreOpen ? 'nav-more--open' : ''}`}><button type="button" aria-expanded={moreOpen} aria-controls="nav-more-panel" onClick={() => setMoreOpen(!moreOpen)}>{t('nav.more')} <span aria-hidden="true">⌄</span></button><div id="nav-more-panel" className="nav-more__panel">{secondary.map(item => <a key={item.href} href={item.href} onClick={() => setMoreOpen(false)}>{l(item.label)}</a>)}</div></div>
       </nav>
-      <a className="header-contact" href="#contato">Let's talk <ArrowUpRight size={15} aria-hidden="true" /></a>
+      <a className="header-contact" href="#contato">{t('nav.cta')} <ArrowUpRight size={15} aria-hidden="true" /></a>
+      <LangToggle />
       <ThemeToggle />
-      <button className="menu-toggle" type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? 'Close menu' : 'Open menu'}>{open ? <X /> : <Menu />}</button>
+      <button className="menu-toggle" type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? t('nav.close') : t('nav.open')}>{open ? <X /> : <Menu />}</button>
     </div>
-    <nav id="mobile-menu" className={`mobile-nav ${open ? 'mobile-nav--open' : ''}`} aria-label="Mobile navigation" inert={!open}>
-      {portfolio.navigation.map(item => <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>)}
+    <nav id="mobile-menu" className={`mobile-nav ${open ? 'mobile-nav--open' : ''}`} aria-label={t('nav.mobile')} inert={!open}>
+      {portfolio.navigation.map(item => <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{l(item.label)}</a>)}
     </nav>
   </header>
 }

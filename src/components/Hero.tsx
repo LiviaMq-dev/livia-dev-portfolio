@@ -1,16 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Download, Github, Instagram, Linkedin } from 'lucide-react'
+import { useI18n } from '../i18n/I18nProvider'
 
-const lines = [
-  "Hi, I'm Livia",
-  'Full Stack',
-  'Developer',
-  'Learning, developing and evolving through real projects in the technology area.',
-] as const
-const starts = [0, lines[0].length, lines[0].length + lines[1].length, lines[0].length + lines[1].length + lines[2].length]
-const total = lines.reduce((sum, line) => sum + line.length, 0)
+type Typing = { lines: string[]; starts: number[] }
 
-function TypedLine({ index, progress }: { index: number; progress: number }) {
+function TypedLine({ index, progress, typing }: { index: number; progress: number; typing: Typing }) {
+  const { lines, starts } = typing
   const text = lines[index]
   const count = Math.max(0, Math.min(text.length, progress - starts[index]))
   const active = progress >= starts[index] && progress < starts[index] + text.length
@@ -21,14 +16,20 @@ function TypedLine({ index, progress }: { index: number; progress: number }) {
 }
 
 export function Hero() {
+  const { t, lang } = useI18n()
+  const lines = [t('hero.greeting'), t('hero.title1'), t('hero.title2'), t('hero.lead')]
+  const starts = [0, lines[0].length, lines[0].length + lines[1].length, lines[0].length + lines[1].length + lines[2].length]
+  const total = lines.reduce((sum, line) => sum + line.length, 0)
+  const typing = { lines, starts }
   const [progress, setProgress] = useState(() =>
     typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? total : 0
   )
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (media.matches) return
+    if (media.matches) { setProgress(total); return }
     let current = 0
+    setProgress(0)
     let timer = 0
     const advance = () => {
       current += 1
@@ -45,23 +46,23 @@ export function Hero() {
     timer = window.setTimeout(advance, 320)
     media.addEventListener('change', onPreferenceChange)
     return () => { window.clearTimeout(timer); media.removeEventListener('change', onPreferenceChange) }
-  }, [])
+  }, [lang])
 
   return <section className="hero shell" id="inicio" aria-labelledby="hero-title">
     <div className="hero-glow" aria-hidden="true"><span /><span /><span /></div>
     <div className="hero__copy">
-      <p className="hero__intro"><span className="sr-only">{lines[0]}</span><TypedLine index={0} progress={progress} /></p>
-      <h1 id="hero-title"><span className="sr-only">Full Stack Developer</span><TypedLine index={1} progress={progress} /><TypedLine index={2} progress={progress} /></h1>
-      <p className="hero__lead"><span className="sr-only">{lines[3]}</span><TypedLine index={3} progress={progress} /></p>
-      <div className="hero__actions" aria-label="Currículo e redes sociais">
-        <button className="hero__cv" type="button" disabled title="Currículo ainda não disponível">Download CV <Download size={21} aria-hidden="true" /></button>
+      <p className="hero__intro"><span className="sr-only">{lines[0]}</span><TypedLine index={0} progress={progress} typing={typing} /></p>
+      <h1 id="hero-title"><span className="sr-only">{lines[1]} {lines[2]}</span><TypedLine index={1} progress={progress} typing={typing} /><TypedLine index={2} progress={progress} typing={typing} /></h1>
+      <p className="hero__lead"><span className="sr-only">{lines[3]}</span><TypedLine index={3} progress={progress} typing={typing} /></p>
+      <div className="hero__actions" aria-label={t('hero.actions')}>
+        <button className="hero__cv" type="button" disabled title={t('hero.cvSoon')}>{t('hero.cv')} <Download size={21} aria-hidden="true" /></button>
         <span className="hero__socials">
-          <button type="button" disabled aria-label="LinkedIn: link em breve" title="LinkedIn em breve"><Linkedin size={24} aria-hidden="true" /></button>
-          <button type="button" disabled aria-label="GitHub: link em breve" title="GitHub em breve"><Github size={24} aria-hidden="true" /></button>
-          <button type="button" disabled aria-label="Instagram: link em breve" title="Instagram em breve"><Instagram size={24} aria-hidden="true" /></button>
+          <button type="button" disabled aria-label={t('hero.soon', { name: 'LinkedIn' })} title={t('hero.soon', { name: 'LinkedIn' })}><Linkedin size={24} aria-hidden="true" /></button>
+          <button type="button" disabled aria-label={t('hero.soon', { name: 'GitHub' })} title={t('hero.soon', { name: 'GitHub' })}><Github size={24} aria-hidden="true" /></button>
+          <button type="button" disabled aria-label={t('hero.soon', { name: 'Instagram' })} title={t('hero.soon', { name: 'Instagram' })}><Instagram size={24} aria-hidden="true" /></button>
         </span>
       </div>
-      <p className="hero__availability">Links e currículo serão ativados quando você fornecer os endereços e o arquivo.</p>
+      <p className="hero__availability">{t('hero.availability')}</p>
     </div>
   </section>
 }

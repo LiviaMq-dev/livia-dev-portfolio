@@ -7,7 +7,7 @@
   align-items: center;
   padding-block: clamp(72px, 8vw, 105px);
   padding-inline: max(var(--site-gutter), calc((100% - 1280px) / 2));
-  background: #100817;
+  background: #0c0817;
 }
 
 .hero__copy { width: min(100%, 680px); }
@@ -23,7 +23,7 @@
 }
 .hero h1 {
   margin: 0 0 30px;
-  background: linear-gradient(105deg, #9853eb 5%, #b38aef 82%);
+  background: linear-gradient(105deg, #7f53eb 5%, #a78aef 82%);
   background-clip: text;
   color: transparent;
   font-family: 'Space Mono', monospace;
@@ -45,7 +45,7 @@
 .typewriter__ghost { display: block; visibility: hidden; }
 .typewriter__text { position: absolute; inset: 0; display: block; white-space: pre-wrap; }
 .hero h1 .typewriter__text {
-  background: linear-gradient(105deg, #9853eb 5%, #b38aef 82%);
+  background: linear-gradient(105deg, #7f53eb 5%, #a78aef 82%);
   background-clip: text;
   color: transparent;
 }
@@ -54,7 +54,7 @@
   width: .055em;
   height: .82em;
   margin-left: .09em;
-  background: #a700f1;
+  background: #5216e4;
   vertical-align: -.07em;
   animation: caret-blink .7s steps(1, end) infinite;
 }
@@ -64,15 +64,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #8950df;
+  border: 2px solid #7a50df;
   background: transparent;
-  color: #9460e8;
-  box-shadow: inset 0 0 0 1px rgba(174,110,255,.08);
+  color: #8860e8;
+  box-shadow: inset 0 0 0 1px rgba(152, 110, 255,.08);
   transition: background-color .2s ease, color .2s ease, border-color .2s ease;
 }
 .hero__cv:hover, .hero__socials button:hover {
-  border-color: #a700f1;
-  background-color: #a700f1;
+  border-color: #5216e4;
+  background-color: #5216e4;
   color: #fff;
 }
 .hero__cv { min-width: 230px; min-height: 58px; gap: 11px; padding: 0 22px; border-radius: 999px; font-size: 17px; font-weight: 700; letter-spacing: .005em; }

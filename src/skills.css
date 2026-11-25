@@ -19,26 +19,26 @@
   text-align: left;
   cursor: pointer;
 }
-.skill-category__trigger svg:not(.skill-category__chevron) { color: #a700f1; }
+.skill-category__trigger svg:not(.skill-category__chevron) { color: #8f68ee; }
 .skill-category__number {
   color: #807b85;
   font-family: 'Space Mono', monospace;
   font-size: 12px;
 }
 .skill-category__label {
-  color: #f3f0f5;
+  color: #f1f0f5;
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(18px, 2vw, 24px);
   font-weight: 500;
   line-height: 1.25;
 }
 .skill-category__chevron {
-  color: #a700f1;
+  color: #8f68ee;
   transition: transform .2s ease;
 }
 .skill-category--open .skill-category__chevron { transform: rotate(180deg); }
 .skill-category__trigger:hover .skill-category__label,
-.skill-category--open .skill-category__label { color: #c68bf0; }
+.skill-category--open .skill-category__label { color: #a88bf0; }
 .skill-category__panel {
   display: grid;
   grid-template-rows: 0fr;
@@ -65,10 +65,10 @@
   gap: 9px;
   min-height: 40px;
   padding: 8px 13px;
-  border: 1px solid #5b3a68;
+  border: 1px solid #2a2a31;
   border-radius: 8px;
-  background: #1c1023;
-  color: #e8d7f2;
+  background: #0e0e12;
+  color: #e8e8ec;
   font-family: 'Space Mono', monospace;
   font-size: 12px;
   line-height: 1.4;
@@ -82,11 +82,11 @@
   height: 19px;
 }
 .skill-category__tool svg {
-  color: var(--tool-icon-color, #c892e5);
+  color: var(--tool-icon-color, #aa92e5);
 }
 .skill-category__tool:hover {
-  border-color: #a700f1;
-  background: #2a1239;
+  border-color: #5216e4;
+  background: rgba(82, 22, 228, .16);
 }
 @media (max-width: 650px) {
   .skill-category__trigger { grid-template-columns: 28px 28px minmax(0, 1fr) 24px; gap: 12px; min-height: 72px; }

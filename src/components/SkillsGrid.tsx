@@ -9,6 +9,7 @@ import {
 } from 'react-icons/si'
 import type { IconType } from 'react-icons'
 import { portfolio } from '../data/portfolio'
+import { useI18n } from '../i18n/I18nProvider'
 
 const canvaIcon = new URL('../assets/canva.ico', import.meta.url).href
 
@@ -35,6 +36,7 @@ const toolColors: Record<string, string> = {
 const wide = new Set(['frontend', 'platforms'])
 
 export function SkillsGrid() {
+  const { t, l } = useI18n()
   const gridRef = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
 
@@ -55,8 +57,8 @@ export function SkillsGrid() {
       return <article key={area.id} className={`skill-card ${wide.has(area.id) ? 'skill-card--wide' : ''}`} style={{ '--i': index } as CSSProperties}>
         <header className="skill-card__header">
           <span className="skill-card__icon"><Icon size={20} strokeWidth={1.7} aria-hidden="true" /></span>
-          <h3>{area.label}</h3>
-          <span className="skill-card__count">{area.tools.length} {area.tools.length === 1 ? 'tool' : 'tools'}</span>
+          <h3>{l(area.label)}</h3>
+          <span className="skill-card__count">{t(area.tools.length === 1 ? 'skills.tool' : 'skills.tools', { count: area.tools.length })}</span>
         </header>
         <ul className="skill-card__tools">
           {area.tools.map(tool => {

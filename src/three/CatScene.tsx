@@ -58,13 +58,13 @@ function Cat() {
           <mesh position={[-0.057, 0.075, 0.077]} scale={[0.034, 0.04, 0.014]}><sphereGeometry args={[1, 12, 8]} /><meshBasicMaterial color="#ffffff" /></mesh>
         </group>)}
       </group>
-      <mesh position={[0, -0.24, 0.696]} rotation={[0, 0, Math.PI]} scale={[0.1, 0.075, 0.045]}><coneGeometry args={[1, 1, 3]} /><meshStandardMaterial color="#a700f1" roughness={0.5} /></mesh>
+      <mesh position={[0, -0.24, 0.696]} rotation={[0, 0, Math.PI]} scale={[0.1, 0.075, 0.045]}><coneGeometry args={[1, 1, 3]} /><meshStandardMaterial color="#5216e4" roughness={0.5} /></mesh>
       {[-1, 1].map(side => <group key={side} position={[side * 0.2, -0.3, 0.68]}>
         {[-0.08, 0.03, 0.14].map((y, i) => <mesh key={i} position={[side * 0.34, y, 0]} rotation={[0, 0, side * (i - 1) * 0.16]}><cylinderGeometry args={[0.006, 0.006, 0.69, 6]} /><meshStandardMaterial color="#8a8292" /></mesh>)}
       </group>)}
     </group>
-    <mesh position={[0, -0.05, 0.56]} scale={[0.57, 0.065, 0.54]}><torusGeometry args={[1, 0.1, 8, 48]} /><meshStandardMaterial color="#a700f1" metalness={0.25} roughness={0.4} /></mesh>
-    <mesh position={[0, -0.22, 0.82]} scale={[0.12, 0.12, 0.045]}><sphereGeometry args={[1, 16, 12]} /><meshStandardMaterial color="#a700f1" metalness={0.45} roughness={0.3} /></mesh>
+    <mesh position={[0, -0.05, 0.56]} scale={[0.57, 0.065, 0.54]}><torusGeometry args={[1, 0.1, 8, 48]} /><meshStandardMaterial color="#5216e4" metalness={0.25} roughness={0.4} /></mesh>
+    <mesh position={[0, -0.22, 0.82]} scale={[0.12, 0.12, 0.045]}><sphereGeometry args={[1, 16, 12]} /><meshStandardMaterial color="#5216e4" metalness={0.45} roughness={0.3} /></mesh>
   </group>
 }
 
@@ -72,7 +72,7 @@ export default function CatScene() {
   return <Canvas aria-hidden="true" camera={{ position: [0, 0.18, 5.3], fov: 40 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true, powerPreference: 'low-power' }}>
     <ambientLight intensity={1.8} />
     <directionalLight position={[-3, 5, 5]} intensity={2.5} color="#ffffff" />
-    <pointLight position={[3, 2, -1]} intensity={22} distance={7} color="#a700f1" />
+    <pointLight position={[3, 2, -1]} intensity={22} distance={7} color="#5216e4" />
     <Cat />
   </Canvas>
 }

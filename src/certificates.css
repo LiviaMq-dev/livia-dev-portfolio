@@ -22,8 +22,8 @@
 
 .certificate-card:hover,
 .certificate-card:focus-within {
-  border-color: #a700f1;
-  box-shadow: 0 12px 28px rgba(167, 0, 241, .2);
+  border-color: #5216e4;
+  box-shadow: 0 12px 28px rgba(82, 22, 228, .2);
   transform: translateY(-3px);
 }
 
@@ -36,7 +36,7 @@
 
 .certificate-card h3 {
   margin: 0;
-  color: #f5f1f8;
+  color: #f3f1f8;
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(17px, 1.5vw, 21px);
   font-weight: 600;
@@ -47,7 +47,7 @@
 .certificate-card__year {
   flex: 0 0 auto;
   padding-top: 2px;
-  color: #b760e8;
+  color: #8860e8;
   font-family: 'Space Mono', monospace;
   font-size: 13px;
   font-weight: 700;
@@ -75,10 +75,10 @@
 
 .certificate-card__topics li {
   padding: 5px 9px;
-  border: 1px solid #64397c;
+  border: 1px solid #4d397c;
   border-radius: 5px;
-  background: #351b49;
-  color: #d6a1f4;
+  background: #281b49;
+  color: #b9a1f4;
   font-family: 'Space Mono', monospace;
   font-size: 10px;
   line-height: 1.2;
@@ -90,7 +90,7 @@
   align-self: flex-start;
   gap: 7px;
   margin-top: auto;
-  color: #c678ee;
+  color: #9a78ee;
   font-family: 'Space Mono', monospace;
   font-size: 11px;
   text-decoration: none;

@@ -1,0 +1,14 @@
+/* Cor da marca: #5216e4 em botões, bordas, brilhos e no tema claro.
+   No tema escuro, #5216e4 tem pouco contraste como texto sobre o preto (2,6:1),
+   então os textos roxos usam a mesma cor misturada com branco (#8f68ee, 5,4:1). */
+:root:not([data-theme='light']) .marquee__item,
+:root:not([data-theme='light']) .marquee__star,
+:root:not([data-theme='light']) .about-me__label,
+:root:not([data-theme='light']) .about-me__heading h2 span,
+:root:not([data-theme='light']) .section-title__index,
+:root:not([data-theme='light']) .section-title__accent,
+:root:not([data-theme='light']) .service-item__bracket,
+:root:not([data-theme='light']) .site-footer .brand__symbol { color: #8f68ee; }
+/* Os cartões de certificado têm fundo mais claro que o preto: o ano usa um tom um pouco mais claro. */
+:root:not([data-theme='light']) .certificate-card__year { color: #a07ff0; }
+:root:not([data-theme='light']) .chat-preview__placeholder { color: #8a8a8f; }
