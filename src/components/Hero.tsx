@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Download, Github, Instagram, Linkedin } from 'lucide-react'
 import { useI18n } from '../i18n/I18nProvider'
+import { portfolio } from '../data/portfolio'
 
 type Typing = { lines: string[]; starts: number[] }
 
@@ -58,7 +59,7 @@ export function Hero() {
         <button className="hero__cv" type="button" disabled title={t('hero.cvSoon')}>{t('hero.cv')} <Download size={21} aria-hidden="true" /></button>
         <span className="hero__socials">
           <button type="button" disabled aria-label={t('hero.soon', { name: 'LinkedIn' })} title={t('hero.soon', { name: 'LinkedIn' })}><Linkedin size={24} aria-hidden="true" /></button>
-          <button type="button" disabled aria-label={t('hero.soon', { name: 'GitHub' })} title={t('hero.soon', { name: 'GitHub' })}><Github size={24} aria-hidden="true" /></button>
+          <a href={portfolio.contacts.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={24} aria-hidden="true" /></a>
           <button type="button" disabled aria-label={t('hero.soon', { name: 'Instagram' })} title={t('hero.soon', { name: 'Instagram' })}><Instagram size={24} aria-hidden="true" /></button>
         </span>
       </div>

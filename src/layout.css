@@ -30,7 +30,7 @@
   .hero__lead { font-size: clamp(14px, 1.2vw, 16px); }
   .hero__actions { margin-top: 38px; }
   .hero__cv { min-width: 205px; min-height: 50px; font-size: 15px; }
-  .hero__socials button { width: 46px; height: 46px; }
+  .hero__socials button, .hero__socials a { width: 46px; height: 46px; }
 
   .about-me { padding-block: clamp(72px, 7.5vw, 112px); }
   .about-me__label { margin-bottom: 32px; }

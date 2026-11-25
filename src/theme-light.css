@@ -69,9 +69,11 @@ html.theme-switching *::after {
 :root[data-theme='light'] .hero h1 .typewriter__text { background: linear-gradient(105deg, #4b17c9 5%, #5216e4 82%); background-clip: text; -webkit-background-clip: text; }
 :root[data-theme='light'] .hero__lead { color: var(--l-body); }
 :root[data-theme='light'] .hero__cv,
-:root[data-theme='light'] .hero__socials button { border-color: #5216e4; color: var(--l-accent); box-shadow: none; }
+:root[data-theme='light'] .hero__socials button,
+:root[data-theme='light'] .hero__socials a { border-color: #5216e4; color: var(--l-accent); box-shadow: none; }
 :root[data-theme='light'] .hero__cv:hover,
-:root[data-theme='light'] .hero__socials button:hover { color: #fff; }
+:root[data-theme='light'] .hero__socials button:hover,
+:root[data-theme='light'] .hero__socials a:hover { color: #fff; }
 :root[data-theme='light'] .hero__availability { color: var(--l-muted); }
 
 /* ---------- Faixa de tecnologias ---------- */

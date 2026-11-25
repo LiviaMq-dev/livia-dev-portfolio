@@ -357,7 +357,7 @@ export const portfolio = {
       tools: ['Python', 'Java', 'C#', 'MySQL'],
     },
   ] as Service[],
-  contacts: { email: 'biolivia1206@icloud.com', github: '', linkedin: '', instagram: '', whatsapp: '5511971017655' },
+  contacts: { email: 'biolivia1206@icloud.com', github: 'https://github.com/LiviaMq-dev', linkedin: '', instagram: '', whatsapp: '5511971017655' },
   contactReasons: [
     { id: 'quote', label: { en: 'Project quote', pt: 'Orçamento de projeto' } },
     { id: 'job', label: { en: 'Job opportunity', pt: 'Oportunidade de trabalho' } },
